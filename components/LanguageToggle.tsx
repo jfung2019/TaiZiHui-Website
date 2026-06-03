@@ -3,6 +3,15 @@
 import { useTranslation } from "react-i18next";
 import { getHtmlLang, LOCALE_STORAGE_KEY, type SupportedLocale } from "@/lib/i18n";
 
+const languageButtonClass =
+  `relative cursor-pointer px-1 ` +
+  `opacity-85 transition-opacity duration-200 hover:opacity-100 ` +
+  `after:pointer-events-none after:absolute after:-bottom-1 after:left-0 ` +
+  `after:h-[8px] after:w-full after:origin-left after:scale-x-75 ` +
+  `after:rounded-[18px_3px_14px_5px] after:bg-[#b3201d]/85 after:opacity-0 after:blur-[0.2px] ` +
+  `after:content-[''] after:transition-all after:duration-200 ` +
+  `hover:after:scale-x-100 hover:after:opacity-100`;
+
 export default function LanguageToggle() {
   const { i18n, t } = useTranslation();
   const currentLocale = (i18n.language === "zh-TW" ? "zh-TW" : "en") as SupportedLocale;
@@ -28,7 +37,7 @@ export default function LanguageToggle() {
         onClick={() => changeLanguage("en")}
         aria-label={t("language.switchToEn")}
         aria-pressed={currentLocale === "en"}
-        className={`px-1 transition-opacity ${currentLocale === "en" ? "opacity-100" : "opacity-55 hover:opacity-85"}`}
+        className={`${languageButtonClass} ${currentLocale === "en" ? "opacity-100" : ""}`}
       >
         {t("language.en")}
       </button>
@@ -40,7 +49,7 @@ export default function LanguageToggle() {
         onClick={() => changeLanguage("zh-TW")}
         aria-label={t("language.switchToZh")}
         aria-pressed={currentLocale === "zh-TW"}
-        className={`px-1 transition-opacity ${currentLocale === "zh-TW" ? "opacity-100" : "opacity-55 hover:opacity-85"}`}
+        className={`${languageButtonClass} ${currentLocale === "zh-TW" ? "opacity-100" : ""}`}
       >
         {t("language.zh")}
       </button>
