@@ -1,13 +1,18 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import HeroContent from "@/components/HeroContent";
 import Navbar from "@/components/Navbar";
 
 export default function HeroSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="relative min-h-svh overflow-hidden isolate">
       <Image
         src="/placeholders/7208.jpg"
-        alt="Plated Chinese tasting course"
+        alt={t("hero.heroImageAlt")}
         fill
         priority
         className="object-cover object-center md:object-[center_42%]"
@@ -19,7 +24,7 @@ export default function HeroSection() {
         <div>
           <Image
             src="/logo/tzh_logo_vertical.png"
-            alt="Tai Zi Hui logo"
+            alt={t("hero.logoAlt")}
             width={172}
             height={218}
             className="h-auto w-[88px] object-contain sm:w-[120px] lg:w-[156px]"

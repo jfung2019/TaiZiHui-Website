@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "ariaLabel": "主要導覽",
+    "ourStory": "品牌故事",
+    "menu": "菜單",
+    "privateEvents": "私人宴會",
+    "reservations": "訂座"
+  },
+  "hero": {
+    "eyebrow": "香港 · 私房中菜",
+    "title": "一場親密而精緻的粵菜與潮州菜饗宴。",
+    "description": "以時令食材、主廚主理品嚐菜單與貼心款待，為您打造難忘的夜晚。",
+    "reserveTable": "預約訂座",
+    "viewMenu": "查看菜單",
+    "logoAlt": "太子薈標誌",
+    "heroImageAlt": "精緻中菜擺盤"
+  },
+  "experience": {
+    "title": "用餐體驗",
+    "description": "在太子薈，每一道菜都以時令食材與粵菜技法精心呈現。從私密私房宴到主廚品嚐菜單，我們為您營造專屬、雅致而難忘的用餐時光。",
+    "leftImageAlt": "脆皮燒鴨菜式",
+    "rightImageAlt": "中菜品嚐菜式"
+  },
+  "language": {
+    "en": "EN",
+    "zh": "CH",
+    "switchToEn": "切換至英文",
+    "switchToZh": "切換至繁體中文"
+  }
+}

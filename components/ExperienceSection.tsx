@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ExperienceSection() {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const leftImageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -56,7 +58,7 @@ export default function ExperienceSection() {
         >
           <Image
             src="/placeholders/7092.jpg"
-            alt="Roasted duck course"
+            alt={t("experience.leftImageAlt")}
             fill
             className="object-cover object-right"
             sizes="(max-width: 1024px) 100vw, 33vw"
@@ -73,12 +75,10 @@ export default function ExperienceSection() {
               id="experience-heading"
               className="m-0 text-[clamp(2rem,4vw,3.25rem)] font-light leading-[1.05] tracking-[0.02em] text-white/95"
             >
-              Dining Experience
+              {t("experience.title")}
             </h2>
             <p className="mt-6 text-[0.95rem] leading-[1.75] text-white/72 sm:text-base">
-              At Tai Zi Hui, every course is crafted with seasonal ingredients and Cantonese technique.
-              From intimate private dining to chef-led tasting menus, we create evenings that feel
-              personal, refined, and memorable.
+              {t("experience.description")}
             </p>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function ExperienceSection() {
         >
           <Image
             src="/placeholders/7208.jpg"
-            alt="Chinese tasting course"
+            alt={t("experience.rightImageAlt")}
             fill
             className="object-cover object-left"
             sizes="(max-width: 1024px) 100vw, 33vw"

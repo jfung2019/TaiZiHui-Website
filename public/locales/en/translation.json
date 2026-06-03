@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "ariaLabel": "Main navigation",
+    "ourStory": "Our Story",
+    "menu": "Menu",
+    "privateEvents": "Private Events",
+    "reservations": "Reservations"
+  },
+  "hero": {
+    "eyebrow": "Hong Kong . Private Chinese Kitchen",
+    "title": "An intimate Cantonese and Chiu Chow dining journey.",
+    "description": "Seasonal ingredients, chef-led tasting menus, and bespoke hospitality for a memorable evening.",
+    "reserveTable": "Reserve a Table",
+    "viewMenu": "View Menu",
+    "logoAlt": "Tai Zi Hui logo",
+    "heroImageAlt": "Plated Chinese tasting course"
+  },
+  "experience": {
+    "title": "Dining Experience",
+    "description": "At Tai Zi Hui, every course is crafted with seasonal ingredients and Cantonese technique. From intimate private dining to chef-led tasting menus, we create evenings that feel personal, refined, and memorable.",
+    "leftImageAlt": "Roasted duck course",
+    "rightImageAlt": "Chinese tasting course"
+  },
+  "language": {
+    "en": "EN",
+    "zh": "CH",
+    "switchToEn": "Switch to English",
+    "switchToZh": "Switch to Traditional Chinese"
+  }
+}
