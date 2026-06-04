@@ -13,12 +13,18 @@ function resolveLocale(language: string): SupportedLocale {
   return language === "zh-TW" ? "zh-TW" : "en";
 }
 
+function applyLocaleToDocument(language: string) {
+  const locale = resolveLocale(language);
+  document.documentElement.lang = getHtmlLang(locale);
+  document.documentElement.dataset.locale = locale;
+}
+
 export default function I18nProvider({ children }: I18nProviderProps) {
   useEffect(() => {
-    document.documentElement.lang = getHtmlLang(resolveLocale(i18n.language));
+    applyLocaleToDocument(i18n.language);
 
     const handleLanguageChanged = (language: string) => {
-      document.documentElement.lang = getHtmlLang(resolveLocale(language));
+      applyLocaleToDocument(language);
     };
 
     i18n.on("languageChanged", handleLanguageChanged);

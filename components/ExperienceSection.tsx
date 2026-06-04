@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { typography } from "@/lib/typography";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,10 +58,10 @@ export default function ExperienceSection() {
           className="relative h-[240px] overflow-hidden sm:h-[300px] lg:h-auto"
         >
           <Image
-            src="/placeholders/7092.jpg"
+            src="/placeholders/7435_edited.png"
             alt={t("experience.leftImageAlt")}
             fill
-            className="object-cover object-right"
+            className="object-fill object-right"
             sizes="(max-width: 1024px) 100vw, 33vw"
           />
         </div>
@@ -68,16 +69,13 @@ export default function ExperienceSection() {
         <div
           ref={contentRef}
           data-experience-content
-          className="relative z-2 flex items-center bg-[#1b1b1b] px-8 py-12 sm:px-10 sm:py-14 lg:px-12 lg:py-16"
+          className="relative z-2 flex items-center px-8 py-12 sm:px-10 sm:py-14 lg:px-12 lg:py-16"
         >
           <div className="max-w-[34ch]">
-            <h2
-              id="experience-heading"
-              className="m-0 text-[clamp(2rem,4vw,3.25rem)] font-light leading-[1.05] tracking-[0.02em] text-white/95"
-            >
+            <h2 id="experience-heading" className={`${typography.sectionTitle} m-0 text-white/95`}>
               {t("experience.title")}
             </h2>
-            <p className="mt-6 text-[0.95rem] leading-[1.75] text-white/72 sm:text-base">
+            <p className={`${typography.paragraph} mt-6 text-white/72`}>
               {t("experience.description")}
             </p>
           </div>
@@ -89,10 +87,10 @@ export default function ExperienceSection() {
           className="relative h-[240px] overflow-hidden sm:h-[300px] lg:h-auto"
         >
           <Image
-            src="/placeholders/7208.jpg"
+            src="/placeholders/6606_edited.png"
             alt={t("experience.rightImageAlt")}
             fill
-            className="object-cover object-left"
+            className="object-fill object-left"
             sizes="(max-width: 1024px) 100vw, 33vw"
           />
         </div>
