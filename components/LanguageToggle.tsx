@@ -2,6 +2,7 @@
 
 import { useTranslation } from "react-i18next";
 import { getHtmlLang, LOCALE_STORAGE_KEY, type SupportedLocale } from "@/lib/i18n";
+import { typography } from "@/lib/typography";
 
 const languageButtonClass =
   `relative cursor-pointer px-1 ` +
@@ -28,7 +29,7 @@ export default function LanguageToggle() {
 
   return (
     <div
-      className="flex items-center gap-1 text-[0.72rem] uppercase tracking-[0.08rem] lg:text-sm lg:tracking-[0.1rem]"
+      className={`${typography.nav} flex items-center gap-1 lg:tracking-[0.1rem]`}
       role="group"
       aria-label="Language selection"
     >

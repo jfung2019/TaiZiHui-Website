@@ -13,7 +13,19 @@
     "reserveTable": "預約訂座",
     "viewMenu": "查看菜單",
     "logoAlt": "太子薈標誌",
+    "logoLinkLabel": "返回首頁",
     "heroImageAlt": "精緻中菜擺盤"
+  },
+  "menuShowcase": {
+    "sectionLabel": "菜單展示",
+    "heroDishAlt": "招牌主菜",
+    "ingredient1Alt": "乾鮑魚",
+    "ingredient2Alt": "茶葉",
+    "ingredient3Alt": "陳皮",
+    "ingredient4Alt": "八角",
+    "ingredient5Alt": "乾參",
+    "seeMenuLine": "查看菜單",
+    "seeMenuAriaLabel": "查看菜單"
   },
   "experience": {
     "title": "用餐體驗",

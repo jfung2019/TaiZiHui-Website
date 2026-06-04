@@ -13,7 +13,19 @@
     "reserveTable": "Reserve a Table",
     "viewMenu": "View Menu",
     "logoAlt": "Tai Zi Hui logo",
+    "logoLinkLabel": "Go to home page",
     "heroImageAlt": "Plated Chinese tasting course"
+  },
+  "menuShowcase": {
+    "sectionLabel": "Menu showcase",
+    "heroDishAlt": "Signature hero dish",
+    "ingredient1Alt": "Dried abalone",
+    "ingredient2Alt": "Tea leaf sprig",
+    "ingredient3Alt": "Mandarin orange peel",
+    "ingredient4Alt": "Star anise",
+    "ingredient5Alt": "Dried ginseng",
+    "seeMenuLine": "SEE MENU",
+    "seeMenuAriaLabel": "See menu"
   },
   "experience": {
     "title": "Dining Experience",
