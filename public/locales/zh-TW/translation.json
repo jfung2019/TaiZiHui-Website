@@ -27,11 +27,11 @@
     "seeMenuLine": "查看菜單",
     "seeMenuAriaLabel": "查看菜單"
   },
-  "experience": {
-    "title": "用餐體驗",
-    "description": "在太子薈，每一道菜都以時令食材與粵菜技法精心呈現。從私密私房宴到主廚品嚐菜單，我們為您營造專屬、雅致而難忘的用餐時光。",
-    "leftImageAlt": "脆皮燒鴨菜式",
-    "rightImageAlt": "中菜品嚐菜式"
+  "locationSection": {
+    "title": "尖沙咀心臟地帶",
+    "description": "太子薈隱身於尖沙咀王子大廈三樓，坐擁鬧市中的靜謐天地。我們提供頂級中菜，私密而尊貴的用餐體驗。",
+    "leftImageAlt": "清晨圖片",
+    "rightImageAlt": "黃昏圖片"
   },
   "experiencesShowcase": {
     "sectionLabel": "用餐體驗展示",

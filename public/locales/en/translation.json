@@ -27,11 +27,11 @@
     "seeMenuLine": "SEE MENU",
     "seeMenuAriaLabel": "See menu"
   },
-  "experience": {
-    "title": "Dining Experience",
-    "description": "At Tai Zi Hui, every course is crafted with seasonal ingredients and Cantonese technique. From intimate private dining to chef-led tasting menus, we create evenings that feel personal, refined, and memorable.",
-    "leftImageAlt": "Roasted duck course",
-    "rightImageAlt": "Chinese tasting course"
+  "locationSection": {
+    "title": "The Heart of Tsim Sha Tsui",
+    "description": "Discreetly located on Prince Tower's 3rd floor along Peking Road, our private kitchen offers elite Chinese dining with absolute privacy.",
+    "leftImageAlt": "Morning image",
+    "rightImageAlt": "Evening image"
   },
   "experiencesShowcase": {
     "sectionLabel": "Experiences showcase",
