@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getHtmlLang, LOCALE_STORAGE_KEY, type SupportedLocale } from "@/lib/i18n";
 import { typography } from "@/lib/typography";
@@ -15,7 +16,16 @@ const languageButtonClass =
 
 export default function LanguageToggle() {
   const { i18n, t } = useTranslation();
+  const [isMounted, setIsMounted] = useState(false);
   const currentLocale = (i18n.language === "zh-TW" ? "zh-TW" : "en") as SupportedLocale;
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   const changeLanguage = (locale: SupportedLocale) => {
     if (locale === currentLocale) {

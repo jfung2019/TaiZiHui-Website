@@ -1,12 +1,13 @@
 import i18n from "i18next";
-import HttpBackend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
+import enTranslation from "@/public/locales/en/translation.json";
+import zhTwTranslation from "@/public/locales/zh-TW/translation.json";
 
 export const LOCALE_STORAGE_KEY = "locale";
 export const SUPPORTED_LOCALES = ["en", "zh-TW"] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
-function getStoredLocale(): SupportedLocale {
+export function getStoredLocale(): SupportedLocale {
   if (typeof window === "undefined") {
     return "en";
   }
@@ -25,24 +26,22 @@ export function getHtmlLang(locale: SupportedLocale): string {
 
 const i18nInstance = i18n.createInstance();
 
-i18nInstance
-  .use(HttpBackend)
-  .use(initReactI18next)
-  .init({
-    lng: getStoredLocale(),
-    fallbackLng: "en",
-    supportedLngs: [...SUPPORTED_LOCALES],
-    ns: ["translation"],
-    defaultNS: "translation",
-    backend: {
-      loadPath: "/locales/{{lng}}/translation.json"
-    },
-    interpolation: {
-      escapeValue: false
-    },
-    react: {
-      useSuspense: false
-    }
-  });
+i18nInstance.use(initReactI18next).init({
+  lng: "en",
+  fallbackLng: "en",
+  supportedLngs: [...SUPPORTED_LOCALES],
+  ns: ["translation"],
+  defaultNS: "translation",
+  resources: {
+    en: { translation: enTranslation },
+    "zh-TW": { translation: zhTwTranslation }
+  },
+  interpolation: {
+    escapeValue: false
+  },
+  react: {
+    useSuspense: false
+  }
+});
 
 export default i18nInstance;

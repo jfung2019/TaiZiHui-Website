@@ -33,6 +33,15 @@
     "leftImageAlt": "脆皮燒鴨菜式",
     "rightImageAlt": "中菜品嚐菜式"
   },
+  "experiencesShowcase": {
+    "sectionLabel": "用餐體驗展示",
+    "roomImageAlt": "V1圖片",
+    "roomHeading": "私密空間",
+    "roomDescription": "我們的私密空間設計為提供一場親密而舒適的用餐體驗，是舉辦私人晚餐或商務會議的完美場所。",
+    "foodImageAlt": "魚湯圖片",
+    "foodHeading": "用餐體驗",
+    "foodDescription": "我們的用餐體驗設計為提供一場獨特而難忘的用餐體驗，是舉辦私人晚餐或商務會議的完美場所。"
+  },
   "language": {
     "en": "EN",
     "zh": "CH",

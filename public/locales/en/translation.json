@@ -33,6 +33,15 @@
     "leftImageAlt": "Roasted duck course",
     "rightImageAlt": "Chinese tasting course"
   },
+  "experiencesShowcase": {
+    "sectionLabel": "Experiences showcase",
+    "roomImageAlt": "V1 image",
+    "roomHeading": "Private Space",
+    "roomDescription": "Our private space is designed to provide a intimate and comfortable dining experience. It is equipped with a private dining area, a private bar, and a private restroom. It is the perfect place for a private dinner or a business meeting.",
+    "foodImageAlt": "fish soup image",
+    "foodHeading": "Dining Experience",
+    "foodDescription": "Our dining experience is designed to provide a unique and memorable dining experience. It is equipped with a private dining area, a private bar, and a private restroom. It is the perfect place for a private dinner or a business meeting."
+  },
   "language": {
     "en": "EN",
     "zh": "CH",

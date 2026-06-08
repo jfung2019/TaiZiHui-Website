@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { I18nextProvider } from "react-i18next";
-import i18n, { getHtmlLang, type SupportedLocale } from "@/lib/i18n";
+import i18n, { getHtmlLang, getStoredLocale, type SupportedLocale } from "@/lib/i18n";
 
 type I18nProviderProps = Readonly<{
   children: ReactNode;
@@ -21,6 +21,11 @@ function applyLocaleToDocument(language: string) {
 
 export default function I18nProvider({ children }: I18nProviderProps) {
   useEffect(() => {
+    const storedLocale = getStoredLocale();
+    if (storedLocale !== i18n.language) {
+      void i18n.changeLanguage(storedLocale);
+    }
+
     applyLocaleToDocument(i18n.language);
 
     const handleLanguageChanged = (language: string) => {
