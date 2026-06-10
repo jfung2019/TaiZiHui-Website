@@ -67,6 +67,47 @@
     "seeMenuLine": "SEE MENU",
     "seeMenuAriaLabel": "See menu"
   },
+  "facebookPosts": {
+    "sectionLabel": "Latest Facebook posts",
+    "eyebrow": "SOCIAL UPDATES",
+    "title": "Latest From Facebook",
+    "moreButton": "More on Facebook",
+    "pageLink": "https://www.facebook.com/taizihuihk",
+    "openPost": "Open post: {{title}}",
+    "focusPost": "Focus post: {{title}}",
+    "fallbackTitle": "Latest update",
+    "fallbackDescription": "Tap to view this post on Facebook.",
+    "items": {
+      "post1": {
+        "title": "Chef's tasting night highlights",
+        "description": "A look at our latest private tasting menu and seasonal ingredients.",
+        "date": "18 JUL",
+        "imageAlt": "Private dining room at night",
+        "link": "https://www.facebook.com/"
+      },
+      "post2": {
+        "title": "New private event arrangement",
+        "description": "Refined table styling and bespoke service flow for business gatherings.",
+        "date": "14 JUL",
+        "imageAlt": "Restaurant exterior in daylight",
+        "link": "https://www.facebook.com/"
+      },
+      "post3": {
+        "title": "Weekend signature dishes",
+        "description": "Signature dishes curated by our kitchen team for this weekend only.",
+        "date": "10 JUL",
+        "imageAlt": "Restaurant interior",
+        "link": "https://www.facebook.com/"
+      },
+      "post4": {
+        "title": "Chef's seafood recommendation",
+        "description": "Fresh seafood pairing suggestions crafted for intimate dinners.",
+        "date": "06 JUL",
+        "imageAlt": "Seafood soup presentation",
+        "link": "https://www.facebook.com/"
+      }
+    }
+  },
   "language": {
     "en": "EN",
     "zh": "CH",

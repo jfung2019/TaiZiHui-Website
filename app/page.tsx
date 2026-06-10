@@ -1,4 +1,5 @@
 import ExperiencesShowcase from "@/components/ExperienceSection";
+import FacebookPostsSection from "@/components/FacebookPostsSection";
 import HeroSection from "@/components/HeroSection";
 import MenuShowcase from "@/components/MenuShowcase";
 import Navbar from "@/components/Navbar";
@@ -14,6 +15,7 @@ export default function HomePage() {
       <LocationSection />
       <MenuShowcase />
       <SignatureFoodSection />
+      <FacebookPostsSection />
     </>
   );
 }

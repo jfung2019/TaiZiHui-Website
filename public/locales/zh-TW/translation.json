@@ -67,6 +67,47 @@
     "seeMenuLine": "查看菜單",
     "seeMenuAriaLabel": "查看菜單"
   },
+  "facebookPosts": {
+    "sectionLabel": "最新 Facebook 貼文",
+    "eyebrow": "社群動態",
+    "title": "Facebook 最新貼文",
+    "moreButton": "前往 Facebook",
+    "pageLink": "https://www.facebook.com/taizihuihk",
+    "openPost": "打開貼文：{{title}}",
+    "focusPost": "聚焦貼文：{{title}}",
+    "fallbackTitle": "最新動態",
+    "fallbackDescription": "按一下以在 Facebook 查看貼文。",
+    "items": {
+      "post1": {
+        "title": "主廚品鑑之夜精華",
+        "description": "本周時令推介 – 大澳蝦籽柚皮 \n 蝦籽鋪面，鹹香惹味；柚皮索滿上湯，軟糯得嚟仲有陣陣陳皮回甘。最見粵菜「扣」功——火候要準，時間要夠，多一分太爛，少一分太硬。 \n 限量供應。",
+        "date": "7月18日",
+        "imageAlt": "夜間私人用餐空間",
+        "link": "https://www.facebook.com/"
+      },
+      "post2": {
+        "title": "全新私人宴會佈置",
+        "description": "聽日係二十四節氣芒種既開始 黎太子滙感受季節氣氛",
+        "date": "7月14日",
+        "imageAlt": "日間餐廳外觀",
+        "link": "https://www.facebook.com/"
+      },
+      "post3": {
+        "title": "",
+        "description": "",
+        "date": "7月10日",
+        "imageAlt": "餐廳室內空間",
+        "link": "https://www.facebook.com/"
+      },
+      "post4": {
+        "title": "主廚海味精選",
+        "description": "為親密聚餐打造的鮮味海鮮配搭建議。",
+        "date": "7月6日",
+        "imageAlt": "海鮮湯品擺盤",
+        "link": "https://www.facebook.com/"
+      }
+    }
+  },
   "language": {
     "en": "EN",
     "zh": "CH",
