@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import MenuShowcase from "@/components/MenuShowcase";
 import Navbar from "@/components/Navbar";
 import LocationSection from "@/components/LocationSection";
+import ParkingSection from "@/components/ParkingSection";
 import SignatureFoodSection from "@/components/SignatureFoodSection";
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
       <HeroSection />
       <ExperiencesShowcase />
       <LocationSection />
+      <ParkingSection />
       <MenuShowcase />
       <SignatureFoodSection />
       <FacebookPostsSection />

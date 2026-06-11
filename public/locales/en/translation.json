@@ -33,6 +33,33 @@
     "leftImageAlt": "Morning image",
     "rightImageAlt": "Evening image"
   },
+  "parkingSection": {
+    "sectionLabel": "Nearby parking information",
+    "eyebrow": "PARKING NEARBY",
+    "title": "Nearby Parking",
+    "description": "Tai Zi Hui does not provide on-site parking. Guests arriving by car may use nearby mall car parks within walking distance.",
+    "note": "Parking fees and availability are managed by each mall and may vary by time.",
+    "walkingTime": "{{minutes}} min walk",
+    "openMapButton": "Open in Maps",
+    "overviewMapButton": "View nearby parking map",
+    "overviewMapLink": "https://www.google.com/maps/search/?api=1&query=Prince%20Tower%20Tsim%20Sha%20Tsui%20parking",
+    "lots": {
+      "isquare": {
+        "name": "iSQUARE",
+        "minutes": "3",
+        "address": "63 Nathan Road, Tsim Sha Tsui",
+        "imageURL": "/placeholders/isquare.jpg",
+        "mapLink": "https://www.google.com/maps/search/?api=1&query=iSQUARE%20car%20park"
+      },
+      "silvercord": {
+        "name": "Silvercord",
+        "minutes": "5",
+        "address": "30 Canton Road, Tsim Sha Tsui",
+        "imageURL": "/placeholders/silvercord.webp",
+        "mapLink": "https://www.google.com/maps/search/?api=1&query=Silvercord%20car%20park"
+      }
+    }
+  },
   "experiencesShowcase": {
     "sectionLabel": "Experiences showcase",
     "roomImageAlt": "V1 image",
