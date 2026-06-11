@@ -1,1 +1,1 @@
-export { default } from "@/components/facebook-posts/FacebookPostsSection";
+export { default } from "@/components/facebook-showcase/FacebookPostsSection";

@@ -2,66 +2,32 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { typography } from "@/lib/typography";
-
-type PostItem = {
-  id: string;
-  title: string | null;
-  description: string | null;
-  date: string;
-  imageAlt: string;
-  imageSrc: string;
-  link: string;
-};
-
-const IMAGE_BY_POST_ID: Record<string, string> = {
-  post1: "/placeholders/FBpost.jpg",
-  post2: "/placeholders/FBpost2.jpg",
-  post3: "/placeholders/FBpost3.jpg",
-  post4: "/placeholders/fish_soup.png"
-};
+import {
+  fetchFacebookPostsFromBackend,
+  type FacebookPostViewModel
+} from "@/lib/services/facebookPosts.service";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function readTranslatedValue(translatedValue: string, key: string) {
-  const cleaned = translatedValue.trim();
-  return cleaned && cleaned !== key ? cleaned : null;
-}
-
 export default function FacebookPostsSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const heroCardRef = useRef<HTMLAnchorElement>(null);
   const moreButtonWrapRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const posts = useMemo<PostItem[]>(
-    () =>
-      (["post1", "post2", "post3", "post4"] as const).map((id) => {
-        const titleKey = `facebookPosts.items.${id}.title`;
-        const descriptionKey = `facebookPosts.items.${id}.description`;
-
-        return {
-          id,
-          title: readTranslatedValue(t(titleKey), titleKey),
-          description: readTranslatedValue(t(descriptionKey), descriptionKey),
-          date: t(`facebookPosts.items.${id}.date`),
-          imageAlt: t(`facebookPosts.items.${id}.imageAlt`),
-          imageSrc: IMAGE_BY_POST_ID[id],
-          link: t(`facebookPosts.items.${id}.link`)
-        };
-      }),
-    [t]
-  );
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [apiPosts, setApiPosts] = useState<FacebookPostViewModel[]>([]);
   const fallbackTitle = t("facebookPosts.fallbackTitle");
   const fallbackDescription = t("facebookPosts.fallbackDescription");
-  const getDisplayTitle = (post: PostItem) => post.title ?? post.description ?? fallbackTitle;
-  const getDisplayDescription = (post: PostItem) => {
+  const pageLink = t("facebookPosts.pageLink");
+  const posts = apiPosts;
+  const getDisplayTitle = (post: FacebookPostViewModel) => post.title ?? post.description ?? fallbackTitle;
+  const getDisplayDescription = (post: FacebookPostViewModel) => {
     if (post.title && post.description) {
       return post.description;
     }
@@ -70,10 +36,49 @@ export default function FacebookPostsSection() {
     }
     return "";
   };
-  const activePost = posts[activeIndex];
+  const activePost = posts[activeIndex] ?? null;
+
+  useEffect(() => {
+    let cancelled = false;
+    const locale = i18n.language === "zh-TW" ? "zh-TW" : "en";
+    setIsLoading(true);
+
+    fetchFacebookPostsFromBackend({
+      locale,
+      fallbackPageLink: pageLink,
+      limit: 4
+    })
+      .then((items) => {
+        if (!cancelled) {
+          setApiPosts(items);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setApiPosts([]);
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [i18n.language, pageLink]);
+
+  useEffect(() => {
+    if (activeIndex <= posts.length - 1) {
+      return;
+    }
+
+    setActiveIndex(0);
+  }, [activeIndex, posts.length]);
 
   useLayoutEffect(() => {
-    if (!heroCardRef.current) {
+    if (!heroCardRef.current || !activePost) {
       return;
     }
 
@@ -86,7 +91,7 @@ export default function FacebookPostsSection() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [activePost.id]);
+  }, [activePost?.id]);
 
   useLayoutEffect(() => {
     if (!sectionRef.current || !moreButtonWrapRef.current) {
@@ -130,39 +135,49 @@ export default function FacebookPostsSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-          <Link
-            ref={heroCardRef}
-            href={activePost.link}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="group relative block overflow-hidden rounded-sm border border-white/10 bg-black/35"
-            aria-label={t("facebookPosts.openPost", { title: getDisplayTitle(activePost) })}
-          >
-            <div className="relative h-[320px] w-full sm:h-[420px] lg:h-[520px]">
-              <Image
-                key={`${activePost.id}-bg`}
-                src={activePost.imageSrc}
-                alt=""
-                fill
-                sizes="(max-width: 1024px) 100vw, 58vw"
-                className="object-cover opacity-35 blur-sm scale-[1.06]"
-                aria-hidden
-              />
-              <Image
-                key={activePost.id}
-                src={activePost.imageSrc}
-                alt={activePost.imageAlt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 58vw"
-                className="object-contain p-2 transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-              />
-            </div>
+          {activePost ? (
+            <Link
+              ref={heroCardRef}
+              href={activePost.link}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="group relative block overflow-hidden rounded-sm border border-white/10 bg-black/35"
+              aria-label={t("facebookPosts.openPost", { title: getDisplayTitle(activePost) })}
+            >
+              <div className="relative h-[320px] w-full sm:h-[420px] lg:h-[520px]">
+                <Image
+                  key={`${activePost.id}-bg`}
+                  src={activePost.imageSrc}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  className="object-cover opacity-35 blur-sm scale-[1.06]"
+                  unoptimized={activePost.imageSrc.startsWith("http")}
+                  aria-hidden
+                />
+                <Image
+                  key={activePost.id}
+                  src={activePost.imageSrc}
+                  alt={activePost.imageAlt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  className="object-contain p-2 transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                  unoptimized={activePost.imageSrc.startsWith("http")}
+                />
+              </div>
 
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent px-5 pb-5 pt-12">
-              <p className={`${typography.caption} text-white/70`}>{activePost.date}</p>
-              <h3 className={`${typography.button} mt-2 text-white`}>{getDisplayTitle(activePost)}</h3>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent px-5 pb-5 pt-12">
+                {activePost.date ? <p className={`${typography.caption} text-white/70`}>{activePost.date}</p> : null}
+                <h3 className={`${typography.button} mt-2 text-white`}>{getDisplayTitle(activePost)}</h3>
+              </div>
+            </Link>
+          ) : (
+            <div className="relative flex h-[320px] w-full items-center justify-center rounded-sm border border-white/10 bg-black/35 px-6 text-center sm:h-[420px] lg:h-[520px]">
+              <p className={`${typography.caption} text-white/65`}>
+                {isLoading ? t("facebookPosts.loading", "Loading latest posts...") : fallbackDescription}
+              </p>
             </div>
-          </Link>
+          )}
 
           <div>
             <div className="space-y-2">
@@ -190,9 +205,11 @@ export default function FacebookPostsSection() {
                           </p>
                         ) : null}
                       </div>
-                      <span className={`${typography.caption} shrink-0 ${isActive ? "text-white/90" : "text-white/55"}`}>
-                        {post.date}
-                      </span>
+                      {post.date ? (
+                        <span className={`${typography.caption} shrink-0 ${isActive ? "text-white/90" : "text-white/55"}`}>
+                          {post.date}
+                        </span>
+                      ) : null}
                     </div>
                   </button>
                 );
@@ -200,7 +217,7 @@ export default function FacebookPostsSection() {
             </div>
             <div ref={moreButtonWrapRef} className="mt-20 flex justify-center">
               <Link
-                href={t("facebookPosts.pageLink")}
+                href={pageLink}
                 target="_blank"
                 rel="noreferrer noopener"
                 className={`${typography.button} inline-flex items-center gap-2 rounded-md border border-[#FFD700]/75 px-8 py-4 text-white transition-colors duration-200 hover:bg-[#FFD700]/18`}
