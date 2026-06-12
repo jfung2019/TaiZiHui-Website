@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
+import { typography } from "@/lib/typography";
 
 export default function HeroContent() {
   const { t } = useTranslation();
@@ -19,13 +20,13 @@ export default function HeroContent() {
       <div className="mt-7 flex flex-wrap justify-end gap-2.5 sm:mt-[30px] sm:gap-3">
         <a
           href="#"
-          className="inline-flex h-11 min-w-[140px] items-center justify-center border border-white/60 bg-white/10 px-4 text-[0.7rem] uppercase tracking-[0.08rem] transition-colors duration-200 hover:bg-white/15 sm:h-[45px] sm:min-w-[156px] sm:px-[18px] sm:text-[0.82rem]"
+          className={`${typography.button} inline-flex h-11 min-w-[140px] items-center justify-center border border-white/60 bg-white/10 px-4 transition-colors duration-200 hover:bg-white/15 sm:h-[45px] sm:min-w-[156px] sm:px-[18px]`}
         >
           {t("hero.reserveTable")}
         </a>
         <a
           href="#"
-          className="inline-flex h-11 min-w-[140px] items-center justify-center border border-white/60 bg-black/10 px-4 text-[0.7rem] uppercase tracking-[0.08rem] transition-colors duration-200 hover:bg-black/20 sm:h-[45px] sm:min-w-[156px] sm:px-[18px] sm:text-[0.82rem]"
+          className={`${typography.button} inline-flex h-11 min-w-[140px] items-center justify-center border border-white/60 bg-black/10 px-4 transition-colors duration-200 hover:bg-black/20 sm:h-[45px] sm:min-w-[156px] sm:px-[18px]`}
         >
           {t("hero.viewMenu")}
         </a>

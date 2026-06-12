@@ -13,13 +13,34 @@
     "reserveTable": "預約訂座",
     "viewMenu": "查看菜單",
     "logoAlt": "太子薈標誌",
+    "logoLinkLabel": "返回首頁",
     "heroImageAlt": "精緻中菜擺盤"
   },
-  "experience": {
-    "title": "用餐體驗",
-    "description": "在太子薈，每一道菜都以時令食材與粵菜技法精心呈現。從私密私房宴到主廚品嚐菜單，我們為您營造專屬、雅致而難忘的用餐時光。",
-    "leftImageAlt": "脆皮燒鴨菜式",
-    "rightImageAlt": "中菜品嚐菜式"
+  "menuShowcase": {
+    "sectionLabel": "菜單展示",
+    "heroDishAlt": "招牌主菜",
+    "ingredient1Alt": "乾鮑魚",
+    "ingredient2Alt": "茶葉",
+    "ingredient3Alt": "陳皮",
+    "ingredient4Alt": "八角",
+    "ingredient5Alt": "乾參",
+    "seeMenuLine": "查看菜單",
+    "seeMenuAriaLabel": "查看菜單"
+  },
+  "locationSection": {
+    "title": "尖沙咀心臟地帶",
+    "description": "太子滙隱身於尖沙咀太子集團中心三樓，坐擁鬧市中的靜謐天地。我們提供頂級中菜，私密而尊貴的用餐體驗。",
+    "leftImageAlt": "清晨圖片",
+    "rightImageAlt": "黃昏圖片"
+  },
+  "experiencesShowcase": {
+    "sectionLabel": "用餐體驗展示",
+    "roomImageAlt": "V1圖片",
+    "roomHeading": "私密空間",
+    "roomDescription": "我們的私密空間設計為提供一場親密而舒適的用餐體驗，是舉辦私人晚餐或商務會議的完美場所。",
+    "foodImageAlt": "魚湯圖片",
+    "foodHeading": "用餐體驗",
+    "foodDescription": "我們的用餐體驗設計為提供一場獨特而難忘的用餐體驗，是舉辦私人晚餐或商務會議的完美場所。"
   },
   "language": {
     "en": "EN",

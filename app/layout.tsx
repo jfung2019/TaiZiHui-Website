@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import I18nProvider from "@/components/I18nProvider";
+import { fontVariableClasses } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ type RootLayoutProps = Readonly<{
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" data-locale="en" className={fontVariableClasses} suppressHydrationWarning>
       <body>
         <I18nProvider>{children}</I18nProvider>
       </body>
