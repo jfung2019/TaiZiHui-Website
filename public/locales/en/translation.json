@@ -42,6 +42,31 @@
     "foodHeading": "Dining Experience",
     "foodDescription": "Our dining experience is designed to provide a unique and memorable dining experience. It is equipped with a private dining area, a private bar, and a private restroom. It is the perfect place for a private dinner or a business meeting."
   },
+  "signatureFood": {
+    "sectionLabel": "Signature dishes carousel",
+    "title": "Signature Dishes",
+    "description": "Click any dish to bring it to center and explore our chef's signature creations.",
+    "focusDish": "Focus on {{dish}}",
+    "items": {
+      "a": {
+        "alt": "Steamed crab with hand-chopped pork patty",
+        "name": "Steamed crab with hand-chopped pork patty",
+        "description": "Our signature dish is a steamed crab with hand-chopped pork patty. It is a classic Cantonese dish that is perfect for a private dinner or a business meeting."
+      },
+      "b": {
+        "alt": "Signature nostalgic gourd duck",
+        "name": "Nostalgic gourd duck",
+        "description": "Our signature dish is a nostalgic gourd duck. It is a classic Cantonese dish that is perfect for a private dinner or a business meeting."
+      },
+      "c": {
+        "alt": "Braised shark fin with hand-picked crab roe",
+        "name": "Braised shark fin with hand-picked crab roe",
+        "description": "Our signature dish is a braised shark fin with hand-picked crab roe. It is a classic Cantonese dish that is perfect for a private dinner or a business meeting."
+      }
+    },
+    "seeMenuLine": "SEE MENU",
+    "seeMenuAriaLabel": "See menu"
+  },
   "language": {
     "en": "EN",
     "zh": "CH",
