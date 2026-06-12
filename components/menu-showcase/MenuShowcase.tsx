@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import SealGeometry from "@/components/menu-showcase/SealGeometry";
-import SeeMenuButton from "@/components/menu-showcase/SeeMenuButton";
 import { useMenuShowcaseEntrance } from "@/components/menu-showcase/useMenuShowcaseEntrance";
 import { useMenuShowcaseParallax } from "@/components/menu-showcase/useMenuShowcaseParallax";
 import {
@@ -124,15 +123,6 @@ export default function MenuShowcase() {
           </div>
         </div>
       </div>
-
-      {/* <div
-        className="absolute left-1/2 z-10 -translate-x-1/2"
-        style={{ top: "calc(50% + min(34vh, 380px))" }}
-      >
-        <div ref={buttonScaleRef} className="origin-center">
-          <SeeMenuButton />
-        </div>
-      </div> */}
     </section>
   );
 }
