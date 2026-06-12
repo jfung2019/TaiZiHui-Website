@@ -33,6 +33,33 @@
     "leftImageAlt": "清晨圖片",
     "rightImageAlt": "黃昏圖片"
   },
+  "parkingSection": {
+    "sectionLabel": "附近泊車資訊",
+    "eyebrow": "附近泊車",
+    "title": "泊車資訊",
+    "description": "太子滙未設店內泊車位。駕車前來的客人可使用步行距離內商場停車場。",
+    "note": "車位供應及收費由商場管理，會因時段而有所不同。",
+    "walkingTime": "步行約 {{minutes}} 分鐘",
+    "openMapButton": "打開地圖",
+    "overviewMapButton": "查看附近泊車地圖",
+    "overviewMapLink": "https://www.google.com/maps/search/?api=1&query=%E5%A4%AA%E5%AD%90%E9%9B%86%E5%9C%98%E4%B8%AD%E5%BF%83%20%E6%B3%8A%E8%BB%8A",
+    "lots": {
+      "isquare": {
+        "name": "iSQUARE 國際廣場",
+        "minutes": "3",
+        "address": "尖沙咀彌敦道 63 號",
+        "imageURL": "/placeholders/isquare.jpg",
+        "mapLink": "https://www.google.com/maps/search/?api=1&query=iSQUARE%20%E5%81%9C%E8%BB%8A%E5%A0%B4"
+      },
+      "silvercord": {
+        "name": "Silvercord 新港商場",
+        "minutes": "5",
+        "address": "尖沙咀廣東道 30 號",
+        "imageURL": "/placeholders/silvercord.webp",
+        "mapLink": "https://www.google.com/maps/search/?api=1&query=Silvercord%20%E5%81%9C%E8%BB%8A%E5%A0%B4"
+      }
+    }
+  },
   "experiencesShowcase": {
     "sectionLabel": "用餐體驗展示",
     "roomImageAlt": "V1圖片",
@@ -66,6 +93,17 @@
     },
     "seeMenuLine": "查看菜單",
     "seeMenuAriaLabel": "查看菜單"
+  },
+  "facebookPosts": {
+    "sectionLabel": "最新 Facebook 貼文",
+    "eyebrow": "社群動態",
+    "title": "Facebook 最新貼文",
+    "moreButton": "前往 Facebook",
+    "pageLink": "https://www.facebook.com/taizihuihk",
+    "openPost": "打開貼文：{{title}}",
+    "focusPost": "聚焦貼文：{{title}}",
+    "fallbackTitle": "最新動態",
+    "fallbackDescription": "按一下以在 Facebook 查看貼文。"
   },
   "language": {
     "en": "EN",
