@@ -18,7 +18,8 @@
   },
   "menuShowcase": {
     "sectionLabel": "菜單展示",
-    "heroDishAlt": "招牌主菜",
+    "Title": "匠心食材",
+    "Description": "一箸一餚，皆是山海與歲月的饋贈。我們追隨四季更迭的步伐，將大自然的詩意，化作盤中溫潤而深刻的百般滋味",
     "ingredient1Alt": "乾鮑魚",
     "ingredient2Alt": "茶葉",
     "ingredient3Alt": "陳皮",

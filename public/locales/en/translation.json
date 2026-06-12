@@ -18,7 +18,8 @@
   },
   "menuShowcase": {
     "sectionLabel": "Menu showcase",
-    "heroDishAlt": "Signature hero dish",
+    "Title": "Crafted Ingredients",
+    "Description": "Every ingredient carries a story of the earth, the sea, and the seasons—curated thoughtfully to bring nature's poetry to life",
     "ingredient1Alt": "Dried abalone",
     "ingredient2Alt": "Tea leaf sprig",
     "ingredient3Alt": "Mandarin orange peel",
