@@ -11,17 +11,17 @@ import SeeMenuButton from "./SeeMenuButton";
 const SIGNATURE_ITEMS = [
   {
     id: "a",
-    src: "/placeholders/太子滙-頂角膏蟹蒸手剁肉餅-6984-removebg-preview.png",
+    src: "/placeholders/6984-removebg-preview.png",
     i18nBaseKey: "signatureFood.items.a"
   },
   {
     id: "b",
-    src: "/placeholders/太子滙-懷舊葫蘆鴨-7092-removebg-preview.png",
+    src: "/placeholders/7092-removebg-preview.png",
     i18nBaseKey: "signatureFood.items.b"
   },
   {
     id: "c",
-    src: "/placeholders/太子滙-生拆蟹皇翅-6958v2-removebg-preview.png",
+    src: "/placeholders/6958-removebg-preview.png",
     i18nBaseKey: "signatureFood.items.c"
   }
 ] as const;
