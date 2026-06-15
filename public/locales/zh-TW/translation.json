@@ -1,10 +1,10 @@
 {
   "nav": {
     "ariaLabel": "主要導覽",
-    "ourStory": "品牌故事",
+    "lastestNews": "最新消息",
     "menu": "菜單",
-    "privateEvents": "私人宴會",
-    "reservations": "訂座"
+    "reservations": "訂座",
+    "parking": "泊車"
   },
   "hero": {
     "eyebrow": "香港 · 私房中菜",
@@ -143,5 +143,9 @@
     "zh": "CH",
     "switchToEn": "切換至英文",
     "switchToZh": "切換至繁體中文"
+  },
+  "Whatsapp": {
+    "link": "https://wa.me/67498972",
+    "label": "WhatsApp 聯絡"
   }
 }
