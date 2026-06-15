@@ -4,13 +4,13 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import SealGeometry from "@/components/menu-showcase/SealGeometry";
-import SeeMenuButton from "@/components/menu-showcase/SeeMenuButton";
 import { useMenuShowcaseEntrance } from "@/components/menu-showcase/useMenuShowcaseEntrance";
 import { useMenuShowcaseParallax } from "@/components/menu-showcase/useMenuShowcaseParallax";
 import {
   menuShowcaseAssets,
   menuShowcaseIngredients
 } from "@/lib/menuShowcase.config";
+import { typography } from "@/lib/typography";
 
 export default function MenuShowcase() {
   const { t } = useTranslation();
@@ -18,6 +18,8 @@ export default function MenuShowcase() {
   const backgroundRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const heroScaleRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
   const ingredientRefs = useRef<(HTMLDivElement | null)[]>([]);
   const ingredientScaleRefs = useRef<(HTMLDivElement | null)[]>([]);
   const buttonScaleRef = useRef<HTMLDivElement>(null);
@@ -32,7 +34,8 @@ export default function MenuShowcase() {
   useMenuShowcaseEntrance({
     sectionRef,
     backgroundRef,
-    heroScaleRef,
+    titleRef,
+    descriptionRef,
     ingredientScaleRefs,
     buttonScaleRef,
     ingredients: menuShowcaseIngredients
@@ -104,28 +107,20 @@ export default function MenuShowcase() {
           style={{ marginTop: "4vh" }}
         >
           <div ref={heroScaleRef} className="origin-center">
-            <Image
-              src={menuShowcaseAssets.heroDish}
-              alt={t("menuShowcase.heroDishAlt")}
-              width={menuShowcaseAssets.heroDishWidth}
-              height={menuShowcaseAssets.heroDishWidth}
-              className="h-auto object-contain drop-shadow-[0_32px_64px_rgba(0,0,0,0.65)]"
-              style={{
-                width: menuShowcaseAssets.heroDishWidth,
-                maxWidth: `min(${menuShowcaseAssets.heroDishMaxVw}vw, ${menuShowcaseAssets.heroDishWidth}px)`
-              }}
-              priority={false}
-            />
+            <h2
+              ref={titleRef}
+              id="menu-showcase-heading"
+              className={`${typography.sectionTitle} m-0 text-center text-white/95 will-change-[clip-path,opacity]`}
+            >
+              {t("menuShowcase.Title")}
+            </h2>
+            <p
+              ref={descriptionRef}
+              className={`${typography.paragraph} mt-6 text-center text-white/72 will-change-[opacity,transform]`}
+            >
+              {t("menuShowcase.Description")}
+            </p>
           </div>
-        </div>
-      </div>
-
-      <div
-        className="absolute left-1/2 z-10 -translate-x-1/2"
-        style={{ top: "calc(50% + min(34vh, 380px))" }}
-      >
-        <div ref={buttonScaleRef} className="origin-center">
-          <SeeMenuButton />
         </div>
       </div>
     </section>

@@ -14,7 +14,8 @@ const INGREDIENT_STAGGER = 0.15;
 type UseMenuShowcaseEntranceOptions = {
   sectionRef: RefObject<HTMLElement | null>;
   backgroundRef: RefObject<HTMLDivElement | null>;
-  heroScaleRef: RefObject<HTMLDivElement | null>;
+  titleRef: RefObject<HTMLHeadingElement | null>;
+  descriptionRef: RefObject<HTMLParagraphElement | null>;
   ingredientScaleRefs: RefObject<(HTMLDivElement | null)[]>;
   buttonScaleRef: RefObject<HTMLDivElement | null>;
   ingredients: MenuIngredientConfig[];
@@ -32,7 +33,8 @@ function sortIngredientIndicesByDepth(ingredients: MenuIngredientConfig[]): numb
 export function useMenuShowcaseEntrance({
   sectionRef,
   backgroundRef,
-  heroScaleRef,
+  titleRef,
+  descriptionRef,
   ingredientScaleRefs,
   buttonScaleRef,
   ingredients
@@ -40,21 +42,27 @@ export function useMenuShowcaseEntrance({
   useLayoutEffect(() => {
     const section = sectionRef.current;
     const background = backgroundRef.current;
-    const heroScale = heroScaleRef.current;
+    const title = titleRef.current;
+    const description = descriptionRef.current;
     const buttonScale = buttonScaleRef.current;
 
     const ingredientScales = sortIngredientIndicesByDepth(ingredients)
       .map((index) => ingredientScaleRefs.current[index])
       .filter((el): el is HTMLDivElement => Boolean(el));
 
-    if (!section || !background || !heroScale || !buttonScale || !ingredientScales.length) {
+    if (!section || !background || !title || !description || !buttonScale || !ingredientScales.length) {
       return;
     }
 
-    const scaleTargets = [heroScale, ...ingredientScales, buttonScale];
+    const scaleTargets = [...ingredientScales, buttonScale];
 
     const ctx = gsap.context(() => {
       gsap.set(background, { opacity: 0 });
+      gsap.set(title, {
+        clipPath: "inset(0 50% 0 50%)",
+        opacity: 0
+      });
+      gsap.set(description, { opacity: 0, y: 18 });
       gsap.set(scaleTargets, {
         ...ENTRANCE_FROM,
         transformOrigin: "center center"
@@ -70,8 +78,27 @@ export function useMenuShowcaseEntrance({
 
       timeline
         .to(background, { opacity: 1, duration: 0.4, ease: "power2.out" })
-        .to(heroScale, ENTRANCE_TO, "-=0.1")
-        .to(ingredientScales, { ...ENTRANCE_TO, stagger: INGREDIENT_STAGGER }, "-=0.25")
+        .to(
+          title,
+          {
+            clipPath: "inset(0 0% 0 0%)",
+            opacity: 1,
+            duration: 0.85,
+            ease: "power2.out"
+          },
+          "-=0.05"
+        )
+        .to(
+          description,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out"
+          },
+          "-=0.35"
+        )
+        .to(ingredientScales, { ...ENTRANCE_TO, stagger: INGREDIENT_STAGGER }, "-=0.2")
         .to(buttonScale, ENTRANCE_TO, "-=0.05");
     }, section);
 
@@ -79,7 +106,8 @@ export function useMenuShowcaseEntrance({
   }, [
     sectionRef,
     backgroundRef,
-    heroScaleRef,
+    titleRef,
+    descriptionRef,
     ingredientScaleRefs,
     buttonScaleRef,
     ingredients

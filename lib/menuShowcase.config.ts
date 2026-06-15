@@ -19,10 +19,10 @@ export type MenuIngredientConfig = {
 
 export const menuShowcaseAssets = {
   background: "/placeholders/background_see_menu.jpeg",
-  heroDish: "/placeholders/6606_edited.png",
-  /** Center dish display size (px); responsive cap uses heroDishMaxVw. */
-  heroDishWidth: 884,
-  heroDishMaxVw: 96,
+  // heroDish: "/placeholders/6606_edited.png",
+  // /** Center dish display size (px); responsive cap uses heroDishMaxVw. */
+  // heroDishWidth: 884,
+  // heroDishMaxVw: 96,
   /** Hide SVG seal ring when the background already includes pedestal geometry. */
   showSealGeometry: false
 } as const;

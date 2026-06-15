@@ -18,7 +18,8 @@
   },
   "menuShowcase": {
     "sectionLabel": "Menu showcase",
-    "heroDishAlt": "Signature hero dish",
+    "Title": "Crafted Ingredients",
+    "Description": "Every ingredient carries a story of the earth, the sea, and the seasons—curated thoughtfully to bring nature's poetry to life",
     "ingredient1Alt": "Dried abalone",
     "ingredient2Alt": "Tea leaf sprig",
     "ingredient3Alt": "Mandarin orange peel",
@@ -26,6 +27,81 @@
     "ingredient5Alt": "Dried ginseng",
     "seeMenuLine": "SEE MENU",
     "seeMenuAriaLabel": "See menu"
+  },
+  "menuPage": {
+    "eyebrow": "Curated Cantonese Menu",
+    "title": "A Selection of Signature Dishes",
+    "description": "Each dish is prepared with seasonal produce, refined Cantonese techniques, and the chef's dedication to balance, aroma, and texture.",
+    "items": {
+      "6452": {
+        "name": "Crispy Pickled Radish with Sauce",
+        "description": "Radish pickled in a house sauce until crisp and refreshing, with balanced saltiness—a classic appetiser."
+      },
+      "6606": {
+        "name": "Silky Abalone with Multigrain Rice",
+        "description": "South African abalone glazed in rich abalone sauce over multigrain rice; tender, bouncy, and deeply flavoured."
+      },
+      "6663": {
+        "name": "Fish Maw Rice Braised in Abalone Sauce",
+        "description": "Fish maw slow-braised in abalone sauce until soft and silky, folded into fragrant rice with a concentrated finish."
+      },
+      "6843": {
+        "name": "Hua Diao Glass Prawn Balls",
+        "description": "Hand-pounded prawns shaped into translucent balls, finished with Shaoxing wine for springy texture and elegant aroma."
+      },
+      "6914": {
+        "name": "Hand-Picked Shad Fish Paste Soup",
+        "description": "Fresh shad filleted to order, the paste silky and the broth clear yet rich—pure river-fish sweetness."
+      },
+      "6958": {
+        "name": "Hand-Picked Crab Roe with Shark Fin",
+        "description": "Crab meat and roe picked fresh, braised with shark fin in a slow-cooked broth—luxurious and deeply savoury."
+      },
+      "6984": {
+        "name": "Steamed Crab with Hand-Chopped Pork Patty",
+        "description": "Creamy crab roe paired with a hand-chopped pork patty—a Tai Zi Hui signature with layered umami."
+      },
+      "7069": {
+        "name": "Lemon Salted Egg King Prawns",
+        "description": "King prawns coated in golden salted egg and lemon, crisp outside and springy within, bright and balanced."
+      },
+      "7092": {
+        "name": "Nostalgic Gourd Duck",
+        "description": "Classic gourd-shaped duck, crisp skin and tender meat, slow-cooked in traditional Cantonese style."
+      },
+      "7208": {
+        "name": "Classic Baked Ma Gang Goose",
+        "description": "Ma Gang goose baked with Hai Chang sauce in a time-honoured recipe—crisp skin, juicy meat, rich glaze."
+      },
+      "7261": {
+        "name": "Fresh Crab Meat and Wild Herb Tart",
+        "description": "Hand-picked crab layered with seasonal wild herbs in a refined tart—fresh, light, and elegantly composed."
+      },
+      "7287": {
+        "name": "Dried Shrimp Paste Oyster Toast",
+        "description": "Golden oysters seasoned with dried shrimp paste on crisp toast—sweet, savoury, and distinctly Hong Kong."
+      },
+      "7310": {
+        "name": "Crispy Fried Beef Shoulder",
+        "description": "Beef shoulder fried until crisp outside and tender within, served with a house sauce—rich without heaviness."
+      },
+      "7340": {
+        "name": "Alaskan King Crab Cheung Fun with Three Onions",
+        "description": "Alaskan king crab wok-tossed with three onions and silky cheung fun—wok hei, crab sweetness, and smooth rice rolls."
+      },
+      "7435": {
+        "name": "Tai O Shrimp Roe Pomelo Peel",
+        "description": "Tai O shrimp roe over pomelo peel braised in superior stock—soft, umami-rich, a showcase of Cantonese braising."
+      },
+      "7439": {
+        "name": "Pan-Fried Giant Grouper Fin with Green Peppercorn",
+        "description": "Giant grouper fin pan-fried with green peppercorn sauce—lightly charred, silky texture, fragrant and appetising."
+      },
+      "7471": {
+        "name": "Bone-Fragrant Turbot",
+        "description": "Whole turbot pan-fried bone-in until the skin is crisp and the flesh delicate—bone fragrance woven through each bite."
+      }
+    }
   },
   "locationSection": {
     "title": "The Heart of Tsim Sha Tsui",
