@@ -1,10 +1,10 @@
 {
   "nav": {
     "ariaLabel": "Main navigation",
-    "ourStory": "Our Story",
+    "lastestNews": "Latest News",
     "menu": "Menu",
-    "privateEvents": "Private Events",
-    "reservations": "Reservations"
+    "reservations": "Reservations",
+    "parking": "Parking"
   },
   "hero": {
     "eyebrow": "Hong Kong . Private Chinese Kitchen",
@@ -219,5 +219,9 @@
     "zh": "CH",
     "switchToEn": "Switch to English",
     "switchToZh": "Switch to Traditional Chinese"
+  },
+  "Whatsapp": {
+    "link": "https://wa.me/67498972",
+    "label": "WhatsApp Us"
   }
 }

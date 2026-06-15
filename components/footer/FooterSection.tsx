@@ -23,7 +23,7 @@ export default function FooterSection() {
           </div>
           <div className="flex flex-wrap items-center gap-3 md:justify-end">
             <Link
-              href={t("footer.bookNowLink")}
+              href={t("footer.whatsappLink")}
               target="_blank"
               rel="noreferrer noopener"
               className={`${typography.button} inline-flex items-center rounded-sm bg-[#b3201d] px-6 py-3 text-white transition-colors duration-200 hover:bg-[#ca2a26]`}
@@ -108,12 +108,12 @@ export default function FooterSection() {
             <p className={`${typography.caption} text-white/56`}>
               {t("footer.copyright", { year: currentYear })}
             </p>
-            <Link href={t("footer.privacyLink")} className={`${typography.caption} text-white/70 transition-colors duration-200 hover:text-white`}>
+            {/* <Link href={t("footer.privacyLink")} className={`${typography.caption} text-white/70 transition-colors duration-200 hover:text-white`}>
               {t("footer.privacy")}
             </Link>
             <Link href={t("footer.termsLink")} className={`${typography.caption} text-white/70 transition-colors duration-200 hover:text-white`}>
               {t("footer.terms")}
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
