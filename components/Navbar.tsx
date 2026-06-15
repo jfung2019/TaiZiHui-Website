@@ -14,10 +14,10 @@ gsap.registerPlugin(ScrollTrigger);
 const LOGO_SCROLL_END = 180;
 
 const navigationKeys = [
-  { key: "nav.lastestNews", href: "#facebook-posts" },
-  { key: "nav.menu", href: "#menu-showcase" },
+  { key: "nav.lastestNews", href: "/#facebook-posts" },
+  { key: "nav.menu", href: "/#menu-showcase" },
   { key: "nav.reservations", href: "#footer" },
-  { key: "nav.parking", href: "#parking-info" },
+  { key: "nav.parking", href: "/#parking-info" },
 ] as const;
 
 export default function Navbar() {
