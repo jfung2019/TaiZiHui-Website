@@ -108,12 +108,12 @@ export default function FooterSection() {
             <p className={`${typography.caption} text-white/56`}>
               {t("footer.copyright", { year: currentYear })}
             </p>
-            <Link href={t("footer.privacyLink")} className={`${typography.caption} text-white/70 transition-colors duration-200 hover:text-white`}>
+            {/* <Link href={t("footer.privacyLink")} className={`${typography.caption} text-white/70 transition-colors duration-200 hover:text-white`}>
               {t("footer.privacy")}
             </Link>
             <Link href={t("footer.termsLink")} className={`${typography.caption} text-white/70 transition-colors duration-200 hover:text-white`}>
               {t("footer.terms")}
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
