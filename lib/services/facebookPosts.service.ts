@@ -178,7 +178,6 @@ export async function fetchFacebookPostsFromBackend({
     process.env.NEXT_PUBLIC_API_FACEBOOK_POSTS_PATH?.trim() || "/api/v1/customer-app/facebook-posts";
   const endpointUrl = joinApiUrl(baseUrl, endpointPath);
   const query = new URLSearchParams({
-    locale,
     limit: String(limit)
   });
 
