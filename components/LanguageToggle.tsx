@@ -17,7 +17,7 @@ const languageButtonClass =
 export default function LanguageToggle() {
   const { i18n, t } = useTranslation();
   const [isMounted, setIsMounted] = useState(false);
-  const currentLocale = (i18n.language === "zh-TW" ? "zh-TW" : "en") as SupportedLocale;
+  const currentLocale = (i18n.language === "en" ? "en" : "zh-TW") as SupportedLocale;
 
   useEffect(() => {
     setIsMounted(true);
