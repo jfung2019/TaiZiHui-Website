@@ -15,12 +15,12 @@ export default function HomePage() {
       <Navbar />
       <FloatingSocialIcons />
       <HeroSection />
+      <FacebookPostsSection />
       <ExperiencesShowcase />
-      <LocationSection />
-      <ParkingSection />
       <MenuShowcase />
       <SignatureFoodSection />
-      <FacebookPostsSection />
+      <LocationSection />
+      <ParkingSection />
       <FooterSection />
     </>
   );
