@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import gsap from "gsap";
@@ -19,11 +20,13 @@ const navigationKeys = [
   { key: "nav.menu", href: "/#menu-showcase" },
   { key: "nav.location", href: "/#location-section" },
   { key: "nav.parking", href: "/#parking-info" },
-  { key: "nav.reservations", href: "#footer" },
+  { key: "nav.reservations", href: "/#footer" },
 ] as const;
 
 export default function Navbar() {
   const { t } = useTranslation();
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const logoRef = useRef<HTMLDivElement>(null);
 
   const scrollSectionToViewportCenter = (sectionId: string, behavior: ScrollBehavior = "smooth") => {
@@ -108,7 +111,7 @@ export default function Navbar() {
               key={key}
               onClick={(event) => {
                 const sectionId = href.split("#")[1];
-                if (!sectionId) {
+                if (!sectionId || !isHomePage) {
                   return;
                 }
 
