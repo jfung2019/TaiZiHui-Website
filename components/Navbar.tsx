@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef, type MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -26,8 +26,21 @@ const navigationKeys = [
 export default function Navbar() {
   const { t } = useTranslation();
   const pathname = usePathname();
+  const router = useRouter();
   const isHomePage = pathname === "/";
   const logoRef = useRef<HTMLDivElement>(null);
+
+  const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+
+    if (isHomePage) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.replaceState(null, "", "/");
+      return;
+    }
+
+    router.push("/");
+  };
 
   const scrollSectionToViewportCenter = (sectionId: string, behavior: ScrollBehavior = "smooth") => {
     const section = document.getElementById(sectionId);
@@ -88,7 +101,7 @@ export default function Navbar() {
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 text-white">
       <div ref={logoRef} className="pointer-events-auto absolute left-2 top-2 will-change-transform sm:left-4 sm:top-4">
-        <Link href="/" aria-label={t("hero.logoLinkLabel")} className="inline-block">
+        <Link href="/" onClick={handleLogoClick} aria-label={t("hero.logoLinkLabel")} className="inline-block">
           <Image
             src="/logo/TZH-logo-private-kitchen.png"
             alt={t("hero.logoAlt")}
