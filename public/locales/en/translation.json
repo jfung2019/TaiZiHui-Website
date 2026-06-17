@@ -204,6 +204,8 @@
     "facebook": "Facebook",
     "facebookAria": "Open Tai Zi Hui Facebook page",
     "facebookLink": "https://www.facebook.com/taizihuihk",
+    "instagram": "Instagram",
+    "instagramLink": "https://www.instagram.com/taizihui.hk/",
     "addressTitle": "Address",
     "address": "3/F, Prince Tower, 12A Peking Road, Tsim Sha Tsui",
     "mapLink": "https://www.google.com/maps/search/?api=1&query=Prince%20Tower%2012A%20Peking%20Road%20Tsim%20Sha%20Tsui",
@@ -229,8 +231,9 @@
     "groupAria": "Floating social links",
     "whatsappAria": "Open WhatsApp chat",
     "facebookAria": "Open Facebook page",
-    "rednoteAria": "Rednote coming soon",
-    "rednoteComingSoon": "Rednote coming soon"
+    "instagramAria": "Open Instagram page",
+    "rednoteAria": "Xiaohongshu coming soon",
+    "rednoteComingSoon": "Xiaohongshu coming soon"
   },
   "Whatsapp": {
     "link": "https://wa.me/67498972",

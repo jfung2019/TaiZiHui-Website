@@ -204,6 +204,8 @@
     "facebook": "Facebook 專頁",
     "facebookAria": "打開太子滙 Facebook 專頁",
     "facebookLink": "https://www.facebook.com/taizihuihk",
+    "instagram": "Instagram",
+    "instagramLink": "https://www.instagram.com/taizihui.hk/",
     "addressTitle": "地址",
     "address": "尖沙咀北京道 12A 號太子集團中心 3 樓",
     "mapLink": "https://www.google.com/maps/search/?api=1&query=%E5%A4%AA%E5%AD%90%E9%9B%86%E5%9C%98%E4%B8%AD%E5%BF%83%2012A%20%E5%8C%97%E4%BA%AC%E9%81%93%20%E5%B0%96%E6%B2%99%E5%92%80",
@@ -229,6 +231,7 @@
     "groupAria": "浮動社群連結",
     "whatsappAria": "開啟 WhatsApp 聯絡",
     "facebookAria": "開啟 Facebook 專頁",
+    "instagramAria": "開啟 Instagram 專頁",
     "rednoteAria": "小紅書即將推出",
     "rednoteComingSoon": "小紅書即將推出"
   },
