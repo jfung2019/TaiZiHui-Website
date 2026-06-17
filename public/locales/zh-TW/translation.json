@@ -3,7 +3,9 @@
     "ariaLabel": "主要導覽",
     "lastestNews": "最新消息",
     "menu": "菜單",
+    "experience": "體驗",
     "reservations": "訂座",
+    "location": "位置",
     "parking": "泊車"
   },
   "hero": {
@@ -107,7 +109,10 @@
     "title": "尖沙咀心臟地帶",
     "description": "太子滙隱身於尖沙咀太子集團中心三樓，坐擁鬧市中的靜謐天地。我們提供頂級中菜，私密而尊貴的用餐體驗。",
     "leftImageAlt": "清晨圖片",
-    "rightImageAlt": "黃昏圖片"
+    "rightImageAlt": "黃昏圖片",
+    "address": "尖沙咀北京道 12A 號太子集團中心 3 樓",
+    "googleMapLink": "https://www.google.com/maps/search/?api=1&query=Prince%20Tower%2012A%20Peking%20Road%20Tsim%20Sha%20Tsui",
+    "openMapButton": "打開 Google 地圖"
   },
   "parkingSection": {
     "sectionLabel": "附近泊車資訊",
@@ -216,9 +221,16 @@
   },
   "language": {
     "en": "EN",
-    "zh": "CH",
+    "zh": "繁中",
     "switchToEn": "切換至英文",
     "switchToZh": "切換至繁體中文"
+  },
+  "floatingSocial": {
+    "groupAria": "浮動社群連結",
+    "whatsappAria": "開啟 WhatsApp 聯絡",
+    "facebookAria": "開啟 Facebook 專頁",
+    "rednoteAria": "小紅書即將推出",
+    "rednoteComingSoon": "小紅書即將推出"
   },
   "Whatsapp": {
     "link": "https://wa.me/67498972",

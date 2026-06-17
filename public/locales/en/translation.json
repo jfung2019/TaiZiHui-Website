@@ -3,7 +3,9 @@
     "ariaLabel": "Main navigation",
     "lastestNews": "Latest News",
     "menu": "Menu",
+    "experience": "Experience",
     "reservations": "Reservations",
+    "location": "Location",
     "parking": "Parking"
   },
   "hero": {
@@ -107,7 +109,10 @@
     "title": "The Heart of Tsim Sha Tsui",
     "description": "Discreetly located on Prince Tower's 3rd floor along Peking Road, our private kitchen offers elite Chinese dining with absolute privacy.",
     "leftImageAlt": "Morning image",
-    "rightImageAlt": "Evening image"
+    "rightImageAlt": "Evening image",
+    "address": "3/F, Prince Tower, 12A Peking Road, Tsim Sha Tsui",
+    "googleMapLink": "https://www.google.com/maps/search/?api=1&query=Prince%20Tower%2012A%20Peking%20Road%20Tsim%20Sha%20Tsui",
+    "openMapButton": "Open in Maps"
   },
   "parkingSection": {
     "sectionLabel": "Nearby parking information",
@@ -216,9 +221,16 @@
   },
   "language": {
     "en": "EN",
-    "zh": "CH",
+    "zh": "繁中",
     "switchToEn": "Switch to English",
     "switchToZh": "Switch to Traditional Chinese"
+  },
+  "floatingSocial": {
+    "groupAria": "Floating social links",
+    "whatsappAria": "Open WhatsApp chat",
+    "facebookAria": "Open Facebook page",
+    "rednoteAria": "Rednote coming soon",
+    "rednoteComingSoon": "Rednote coming soon"
   },
   "Whatsapp": {
     "link": "https://wa.me/67498972",
