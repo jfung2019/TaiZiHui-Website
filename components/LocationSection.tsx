@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { typography } from "@/lib/typography";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,6 +47,7 @@ export default function LocationSection() {
 
   return (
     <section
+      id="location-section"
       ref={sectionRef}
       data-location-section
       className="relative overflow-hidden bg-[#111111] py-12 lg:py-16"
@@ -78,6 +80,19 @@ export default function LocationSection() {
             <p className={`${typography.paragraph} mt-6 text-white/72`}>
               {t("locationSection.description")}
             </p>
+            <p className={`${typography.paragraph} mt-6 text-white/72`}>
+              {t("locationSection.address")}
+            </p>
+            <div className="mt-10 text-center">
+            <Link
+              href={t("locationSection.googleMapLink")}
+              target="_blank"
+              rel="noreferrer noopener"
+              className={`${typography.button} inline-flex items-center rounded-sm border border-[#FFD700]/75 px-5 py-3 text-white/88 transition-colors duration-200 hover:bg-white/10`}
+            >
+              {t("locationSection.openMapButton")}
+            </Link>
+          </div>
           </div>
         </div>
 

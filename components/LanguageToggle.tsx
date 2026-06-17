@@ -45,18 +45,6 @@ export default function LanguageToggle() {
     >
       <button
         type="button"
-        onClick={() => changeLanguage("en")}
-        aria-label={t("language.switchToEn")}
-        aria-pressed={currentLocale === "en"}
-        className={`${languageButtonClass} ${currentLocale === "en" ? "opacity-100" : ""}`}
-      >
-        {t("language.en")}
-      </button>
-      <span className="opacity-50" aria-hidden="true">
-        |
-      </span>
-      <button
-        type="button"
         onClick={() => changeLanguage("zh-TW")}
         aria-label={t("language.switchToZh")}
         aria-pressed={currentLocale === "zh-TW"}
@@ -64,6 +52,19 @@ export default function LanguageToggle() {
       >
         {t("language.zh")}
       </button>
+      <span className="opacity-50" aria-hidden="true">
+        |
+      </span>
+      <button
+        type="button"
+        onClick={() => changeLanguage("en")}
+        aria-label={t("language.switchToEn")}
+        aria-pressed={currentLocale === "en"}
+        className={`${languageButtonClass} ${currentLocale === "en" ? "opacity-100" : ""}`}
+      >
+        {t("language.en")}
+      </button>
+      
     </div>
   );
 }

@@ -17,12 +17,30 @@ const navigationKeys = [
   { key: "nav.lastestNews", href: "/#facebook-posts" },
   { key: "nav.menu", href: "/#menu-showcase" },
   { key: "nav.reservations", href: "#footer" },
+  { key: "nav.location", href: "/#location-section" },
   { key: "nav.parking", href: "/#parking-info" },
 ] as const;
 
 export default function Navbar() {
   const { t } = useTranslation();
   const logoRef = useRef<HTMLDivElement>(null);
+
+  const scrollSectionToViewportCenter = (sectionId: string, behavior: ScrollBehavior = "smooth") => {
+    const section = document.getElementById(sectionId);
+    if (!section) {
+      return;
+    }
+
+    const rect = section.getBoundingClientRect();
+    const absoluteTop = window.scrollY + rect.top;
+    const targetTop = absoluteTop + rect.height / 2 - window.innerHeight / 2;
+    const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+
+    window.scrollTo({
+      top: Math.max(0, Math.min(targetTop, maxScrollTop)),
+      behavior
+    });
+  };
 
   useEffect(() => {
     const logo = logoRef.current;
@@ -52,12 +70,23 @@ export default function Navbar() {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const sectionId = window.location.hash.replace(/^#/, "");
+    if (!sectionId) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      scrollSectionToViewportCenter(sectionId, "auto");
+    });
+  }, []);
+
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 text-white">
       <div ref={logoRef} className="pointer-events-auto absolute left-2 top-2 will-change-transform sm:left-4 sm:top-4">
         <Link href="/" aria-label={t("hero.logoLinkLabel")} className="inline-block">
           <Image
-            src="/logo/tzh_logo_vertical.png"
+            src="/logo/TZH-logo-private-kitchen.png"
             alt={t("hero.logoAlt")}
             width={172}
             height={218}
@@ -76,6 +105,16 @@ export default function Navbar() {
             <a
               href={href}
               key={key}
+              onClick={(event) => {
+                const sectionId = href.split("#")[1];
+                if (!sectionId) {
+                  return;
+                }
+
+                event.preventDefault();
+                scrollSectionToViewportCenter(sectionId);
+                window.history.replaceState(null, "", `/#${sectionId}`);
+              }}
               className={`${typography.nav} relative opacity-85 transition-opacity duration-200 hover:opacity-100 after:pointer-events-none after:absolute after:-bottom-1 after:left-0 after:h-[8px] after:w-full after:origin-left after:scale-x-75 after:rounded-[18px_3px_14px_5px] after:bg-[#b3201d]/85 after:opacity-0 after:blur-[0.2px] after:content-[''] after:transition-all after:duration-200 hover:after:scale-x-100 hover:after:opacity-100`}
             >
               {t(key)}

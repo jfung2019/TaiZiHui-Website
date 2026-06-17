@@ -1,5 +1,6 @@
 import ExperiencesShowcase from "@/components/ExperienceSection";
 import FacebookPostsSection from "@/components/FacebookPostsSection";
+import FloatingSocialIcons from "@/components/FloatingSocialIcons";
 import FooterSection from "@/components/FooterSection";
 import HeroSection from "@/components/HeroSection";
 import MenuShowcase from "@/components/MenuShowcase";
@@ -12,6 +13,7 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
+      <FloatingSocialIcons />
       <HeroSection />
       <ExperiencesShowcase />
       <LocationSection />
