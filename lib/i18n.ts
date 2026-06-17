@@ -9,7 +9,7 @@ export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
 export function getStoredLocale(): SupportedLocale {
   if (typeof window === "undefined") {
-    return "en";
+    return "zh-TW";
   }
 
   const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
@@ -17,7 +17,7 @@ export function getStoredLocale(): SupportedLocale {
     return stored;
   }
 
-  return "en";
+  return "zh-TW";
 }
 
 export function getHtmlLang(locale: SupportedLocale): string {
@@ -27,8 +27,8 @@ export function getHtmlLang(locale: SupportedLocale): string {
 const i18nInstance = i18n.createInstance();
 
 i18nInstance.use(initReactI18next).init({
-  lng: "en",
-  fallbackLng: "en",
+  lng: "zh-TW",
+  fallbackLng: "zh-TW",
   supportedLngs: [...SUPPORTED_LOCALES],
   ns: ["translation"],
   defaultNS: "translation",
