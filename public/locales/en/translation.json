@@ -1,6 +1,9 @@
 {
   "nav": {
     "ariaLabel": "Main navigation",
+    "openMenu": "Menu",
+    "closeMenu": "Close",
+    "languageInMenu": "Language",
     "lastestNews": "Latest News",
     "menu": "Menu",
     "experience": "Experience",
@@ -239,6 +242,7 @@
   "language": {
     "en": "EN",
     "zh": "繁中",
+    "groupAria": "Language selection",
     "switchToEn": "Switch to English",
     "switchToZh": "Switch to Traditional Chinese"
   },
