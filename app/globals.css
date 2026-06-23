@@ -106,3 +106,37 @@ body {
 [data-locale="zh-TW"] .type-button {
   letter-spacing: 0.1em;
 }
+
+.booking-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #e8cb75 0%,
+    #e8cb75 var(--range-progress, 50%),
+    rgba(255, 255, 255, 0.12) var(--range-progress, 50%),
+    rgba(255, 255, 255, 0.12) 100%
+  );
+}
+
+.booking-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #070707;
+  background: #e8cb75;
+  cursor: pointer;
+}
+
+.booking-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #070707;
+  background: #e8cb75;
+  cursor: pointer;
+}

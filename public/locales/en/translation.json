@@ -238,5 +238,115 @@
   "Whatsapp": {
     "link": "https://wa.me/67498972",
     "label": "WhatsApp Us"
+  },
+  "booking": {
+    "eyebrow": "Private Dining Reservation",
+    "title": "Reserve Your Table",
+    "description": "Share your dining preferences and our team will confirm your reservation.",
+    "backHome": "Back to home",
+    "guestUnit": "guests",
+    "largeGroupLabel": "13+",
+    "guestModal": {
+      "title": "Large Group Booking",
+      "description": "Please enter the number of guests (13–50).",
+      "inputLabel": "Number of guests",
+      "placeholder": "13–50",
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "error": "Please enter a whole number between 13 and 50."
+    },
+    "submit": "Confirm Reservation",
+    "submitting": "Submitting...",
+    "submitHint": "Our team will confirm your reservation shortly.",
+    "submitSuccess": "Your reservation has been submitted successfully.",
+    "submitError": "Unable to submit your reservation. Please try again.",
+    "successModal": {
+      "title": "Booking Submitted",
+      "description": "Your booking has been submitted successfully. Our staff will contact you within 1–3 days via WhatsApp.",
+      "close": "Close"
+    },
+    "validationHint": "Please complete all required fields before confirming.",
+    "whatsapp": {
+      "intro": "Tai Zi Hui — New reservation request"
+    },
+    "fields": {
+      "name": "Name",
+      "tel": "Tel",
+      "telError": "Tel must be 8 digits, e.g. 12341234"
+    },
+    "placeholders": {
+      "name": "Your name",
+      "tel": "Your tel number",
+      "specialRequests": "Birthday, anniversary, seating preference, or other arrangements...",
+      "allergy": "List any food allergies or dietary restrictions..."
+    },
+    "sections": {
+      "contact": {
+        "title": "Contact Details"
+      },
+      "guests": {
+        "title": "Number of Guests"
+      },
+      "date": {
+        "title": "Select Date"
+      },
+      "time": {
+        "title": "Dining Time"
+      },
+      "preOrder": {
+        "title": "Pre-order Dishes"
+      },
+      "ingredients": {
+        "title": "Preferred Ingredients"
+      },
+      "budget": {
+        "title": "Budget per Guest"
+      },
+      "specialRequests": {
+        "title": "Special Requests"
+      },
+      "allergy": {
+        "title": "Allergy & Dietary Notes"
+      }
+    },
+    "time": {
+      "lunch": "Lunch",
+      "dinner": "Dinner"
+    },
+    "budget": {
+      "perPerson": "per person",
+      "premium": "Premium experience"
+    },
+    "calendar": {
+      "prevMonth": "Previous month",
+      "nextMonth": "Next month",
+      "weekdays": {
+        "sun": "S",
+        "mon": "M",
+        "tue": "T",
+        "wed": "W",
+        "thu": "T",
+        "fri": "F",
+        "sat": "S"
+      }
+    },
+    "preOrder": {
+      "prevPage": "Previous dishes",
+      "nextPage": "Next dishes",
+      "pageIndicator": "Page {{current}} of {{total}}"
+    },
+    "ingredients": {
+      "prevPage": "Previous ingredients",
+      "nextPage": "Next ingredients",
+      "pageIndicator": "Page {{current}} of {{total}}",
+      "driedAbalone": "Abalone",
+      "fish": "Fish",
+      "sharkFin": "Shark Fin",
+      "shrimp": "Shrimp",
+      "crab": "Crab",
+      "beef": "Beef",
+      "chicken": "Chicken",
+      "goose": "Goose"
+    }
   }
 }

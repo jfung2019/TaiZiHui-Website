@@ -20,7 +20,7 @@ export default function HeroContent() {
       </p>
       <div className="mt-7 flex flex-wrap justify-end gap-2.5 sm:mt-[30px] sm:gap-3">
         <Link
-          href={t("Whatsapp.link")}
+          href="/booking"
           className={`${typography.button} inline-flex h-11 min-w-[140px] items-center justify-center border border-white/60 bg-white/10 px-4 transition-colors duration-200 hover:bg-white/15 sm:h-[45px] sm:min-w-[156px] sm:px-[18px]`}
         >
           {t("hero.reserveTable")}

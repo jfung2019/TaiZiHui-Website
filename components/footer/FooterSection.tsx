@@ -23,9 +23,7 @@ export default function FooterSection() {
           </div>
           <div className="flex flex-wrap items-center gap-3 md:justify-end">
             <Link
-              href={t("footer.whatsappLink")}
-              target="_blank"
-              rel="noreferrer noopener"
+              href="/booking"
               className={`${typography.button} inline-flex items-center rounded-sm bg-[#b3201d] px-6 py-3 text-white transition-colors duration-200 hover:bg-[#ca2a26]`}
             >
               {t("footer.bookNow")}
