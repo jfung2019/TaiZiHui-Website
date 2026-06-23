@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { typography } from "@/lib/typography";
 
-type ParkingLotKey = "isquare" | "silvercord";
+type ParkingLotKey = "isquare" | "silvercord" | "hzentre" | "onepeking";
 
-const PARKING_LOTS: ParkingLotKey[] = ["isquare", "silvercord"];
+const PARKING_LOTS: ParkingLotKey[] = ["isquare", "silvercord", "hzentre", "onepeking"];
 
 export default function ParkingSection() {
   const { t } = useTranslation();

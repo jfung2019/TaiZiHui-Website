@@ -121,6 +121,7 @@
     "description": "Tai Zi Hui does not provide on-site parking. Guests arriving by car may use nearby mall car parks within walking distance.",
     "note": "Parking fees and availability are managed by each mall and may vary by time.",
     "walkingTime": "{{minutes}} min walk",
+    "imagePlaceholder": "Image coming soon",
     "openMapButton": "Open in Maps",
     "overviewMapButton": "View nearby parking map",
     "overviewMapLink": "https://www.google.com/maps/search/?api=1&query=Prince%20Tower%20Tsim%20Sha%20Tsui%20parking",
@@ -138,6 +139,20 @@
         "address": "30 Canton Road, Tsim Sha Tsui",
         "imageURL": "/placeholders/silvercord.webp",
         "mapLink": "https://www.google.com/maps/search/?api=1&query=Silvercord%20car%20park"
+      },
+      "hzentre": {
+        "name": "H Zentre",
+        "minutes": "4",
+        "address": "15 Middle Road, Tsim Sha Tsui",
+        "imageURL": "/placeholders/HZentre.png",
+        "mapLink": "https://www.google.com/maps/search/?api=1&query=H%20Zentre%20car%20park"
+      },
+      "onepeking": {
+        "name": "One Peking",
+        "minutes": "5",
+        "address": "1 Peking Road, Tsim Sha Tsui",
+        "imageURL": "/placeholders/onepeking.png",
+        "mapLink": "https://www.google.com/maps/search/?api=1&query=One%20Peking%20car%20park"
       }
     }
   },

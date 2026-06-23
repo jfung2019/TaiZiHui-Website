@@ -121,6 +121,7 @@
     "description": "太子滙未設店內泊車位。駕車前來的客人可使用步行距離內商場停車場。",
     "note": "車位供應及收費由商場管理，會因時段而有所不同。",
     "walkingTime": "步行約 {{minutes}} 分鐘",
+    "imagePlaceholder": "圖片稍後提供",
     "openMapButton": "打開地圖",
     "overviewMapButton": "查看附近泊車地圖",
     "overviewMapLink": "https://www.google.com/maps/search/?api=1&query=%E5%A4%AA%E5%AD%90%E9%9B%86%E5%9C%98%E4%B8%AD%E5%BF%83%20%E6%B3%8A%E8%BB%8A",
@@ -138,6 +139,20 @@
         "address": "尖沙咀廣東道 30 號",
         "imageURL": "/placeholders/silvercord.webp",
         "mapLink": "https://www.google.com/maps/search/?api=1&query=Silvercord%20%E5%81%9C%E8%BB%8A%E5%A0%B4"
+      },
+      "hzentre": {
+        "name": "H Zentre",
+        "minutes": "4",
+        "address": "尖沙咀中間道 15 號",
+        "imageURL": "/placeholders/HZentre.png",
+        "mapLink": "https://www.google.com/maps/search/?api=1&query=H%20Zentre%20%E5%81%9C%E8%BB%8A%E5%A0%B4"
+      },
+      "onepeking": {
+        "name": "One Peking",
+        "minutes": "2",
+        "address": "尖沙咀北京道 1 號",
+        "imageURL": "/placeholders/onepeking.png",
+        "mapLink": "https://www.google.com/maps/search/?api=1&query=One%20Peking%20%E5%81%9C%E8%BB%8A%E5%A0%B4"
       }
     }
   },
