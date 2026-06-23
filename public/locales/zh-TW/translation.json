@@ -238,5 +238,115 @@
   "Whatsapp": {
     "link": "https://wa.me/67498972",
     "label": "WhatsApp 聯絡"
+  },
+  "booking": {
+    "eyebrow": "私人宴會訂座",
+    "title": "預約訂座",
+    "description": "請填寫您的用餐偏好，我們的團隊將為您確認訂座安排。",
+    "backHome": "返回首頁",
+    "guestUnit": "位",
+    "largeGroupLabel": "13+",
+    "guestModal": {
+      "title": "大型宴會人數",
+      "description": "請輸入賓客人數（13 至 50 位）。",
+      "inputLabel": "賓客人數",
+      "placeholder": "13–50",
+      "confirm": "確認",
+      "cancel": "取消",
+      "error": "請輸入 13 至 50 之間的整數。"
+    },
+    "submit": "確認預約",
+    "submitting": "提交中...",
+    "submitHint": "提交後，我們的團隊將盡快與您確認訂座安排。",
+    "submitSuccess": "您的訂座已成功提交。",
+    "submitError": "無法提交訂座，請稍後再試。",
+    "successModal": {
+      "title": "訂座已提交",
+      "description": "您的訂座已成功提交。職員將於 1 至 3 日內透過 WhatsApp 與您聯絡。",
+      "close": "關閉"
+    },
+    "validationHint": "請先填寫所有必填項目。",
+    "whatsapp": {
+      "intro": "太子滙 — 新訂座查詢"
+    },
+    "fields": {
+      "name": "姓名",
+      "tel": "電話",
+      "telError": "電話號碼必須為 8 位數字，例如 12341234"
+    },
+    "placeholders": {
+      "name": "您的姓名",
+      "tel": "您的電話號碼",
+      "specialRequests": "如有慶生、紀念日或座位偏好，請告訴我們...",
+      "allergy": "請列出任何食物過敏或飲食限制..."
+    },
+    "sections": {
+      "contact": {
+        "title": "聯絡資料"
+      },
+      "guests": {
+        "title": "賓客人數"
+      },
+      "date": {
+        "title": "選擇日期"
+      },
+      "time": {
+        "title": "預訂時段"
+      },
+      "preOrder": {
+        "title": "預點菜式"
+      },
+      "ingredients": {
+        "title": "偏好食材"
+      },
+      "budget": {
+        "title": "每位預算"
+      },
+      "specialRequests": {
+        "title": "特別要求"
+      },
+      "allergy": {
+        "title": "過敏及飲食備註"
+      }
+    },
+    "time": {
+      "lunch": "午膳",
+      "dinner": "晚膳"
+    },
+    "budget": {
+      "perPerson": "每位",
+      "premium": "預計尊尚體驗"
+    },
+    "calendar": {
+      "prevMonth": "上一個月",
+      "nextMonth": "下一個月",
+      "weekdays": {
+        "sun": "日",
+        "mon": "一",
+        "tue": "二",
+        "wed": "三",
+        "thu": "四",
+        "fri": "五",
+        "sat": "六"
+      }
+    },
+    "preOrder": {
+      "prevPage": "上一頁菜式",
+      "nextPage": "下一頁菜式",
+      "pageIndicator": "第 {{current}} 頁，共 {{total}} 頁"
+    },
+    "ingredients": {
+      "prevPage": "上一頁食材",
+      "nextPage": "下一頁食材",
+      "pageIndicator": "第 {{current}} 頁，共 {{total}} 頁",
+      "driedAbalone": "鮑",
+      "fish": "魚",
+      "sharkFin": "翅",
+      "shrimp": "蝦",
+      "crab": "蟹",
+      "beef": "牛",
+      "chicken": "雞",
+      "goose": "鵝"
+    }
   }
 }

@@ -17,10 +17,10 @@ const LOGO_SCROLL_END = 180;
 const navigationKeys = [
   { key: "nav.lastestNews", href: "/#facebook-posts" },
   { key: "nav.experience", href: "/#experiences-showcase" },
-  { key: "nav.menu", href: "/#menu-showcase" },
+  { key: "nav.menu", href: "/menu" },
   { key: "nav.location", href: "/#location-section" },
   { key: "nav.parking", href: "/#parking-info" },
-  { key: "nav.reservations", href: "/#footer" },
+  { key: "nav.reservations", href: "/booking" },
 ] as const;
 
 export default function Navbar() {
