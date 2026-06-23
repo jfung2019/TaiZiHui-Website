@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LanguageToggle from "@/components/LanguageToggle";
+import NavbarMobileMenu from "@/components/NavbarMobileMenu";
 import { typography } from "@/lib/typography";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -138,7 +139,12 @@ export default function Navbar() {
             </a>
           ))}
         </div>
-        <LanguageToggle />
+        <div className="hidden md:block">
+          <LanguageToggle />
+        </div>
+        <div className="md:hidden">
+          <NavbarMobileMenu isHomePage={isHomePage} onSectionNavigate={scrollSectionToViewportCenter} />
+        </div>
       </nav>
     </header>
   );

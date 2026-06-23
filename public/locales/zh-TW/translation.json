@@ -1,6 +1,9 @@
 {
   "nav": {
     "ariaLabel": "主要導覽",
+    "openMenu": "選單",
+    "closeMenu": "關閉",
+    "languageInMenu": "語言",
     "lastestNews": "最新消息",
     "menu": "菜單",
     "experience": "體驗",
@@ -239,6 +242,7 @@
   "language": {
     "en": "EN",
     "zh": "繁中",
+    "groupAria": "語言選擇",
     "switchToEn": "切換至英文",
     "switchToZh": "切換至繁體中文"
   },

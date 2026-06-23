@@ -14,7 +14,7 @@ const languageButtonClass =
   `after:content-[''] after:transition-all after:duration-200 ` +
   `hover:after:scale-x-100 hover:after:opacity-100`;
 
-export default function LanguageToggle() {
+export default function LanguageToggle({ variant = "navbar" }: { variant?: "navbar" | "menu" }) {
   const { i18n, t } = useTranslation();
   const [isMounted, setIsMounted] = useState(false);
   const currentLocale = (i18n.language === "en" ? "en" : "zh-TW") as SupportedLocale;
@@ -36,6 +36,29 @@ export default function LanguageToggle() {
     localStorage.setItem(LOCALE_STORAGE_KEY, locale);
     document.documentElement.lang = getHtmlLang(locale);
   };
+
+  if (variant === "menu") {
+    return (
+      <div className="sm-panel-language" role="group" aria-label={t("language.groupAria")}>
+        <button
+          type="button"
+          onClick={() => changeLanguage("zh-TW")}
+          aria-label={t("language.switchToZh")}
+          aria-pressed={currentLocale === "zh-TW"}
+        >
+          {t("language.zh")}
+        </button>
+        <button
+          type="button"
+          onClick={() => changeLanguage("en")}
+          aria-label={t("language.switchToEn")}
+          aria-pressed={currentLocale === "en"}
+        >
+          {t("language.en")}
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div
