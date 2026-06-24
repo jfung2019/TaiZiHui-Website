@@ -2,13 +2,17 @@
 
 import { useEffect, useRef, type RefObject } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   MENU_HERO_MOTION_SPEED,
   MENU_HERO_PARALLAX_DEPTH,
+  MENU_MOBILE_SCROLL_SHIFT,
   MENU_PARALLAX_BASE_LERP,
   MENU_PARALLAX_MAX_SHIFT,
   type MenuIngredientConfig
 } from "@/lib/menuShowcase.config";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type UseMenuShowcaseParallaxOptions = {
   sectionRef: RefObject<HTMLElement | null>;
@@ -20,6 +24,11 @@ type UseMenuShowcaseParallaxOptions = {
 const DESKTOP_QUERY = "(min-width: 1024px) and (pointer: fine)";
 const QUICK_TO_BASE_DURATION = 0.72;
 
+const MOBILE_SCROLL_TRIGGER = {
+  start: "top bottom",
+  end: "bottom top"
+} as const;
+
 type MotionLayer = {
   x: number;
   y: number;
@@ -28,6 +37,57 @@ type MotionLayer = {
   depth: number;
   lerp: number;
 };
+
+function setupMobileScrollParallax(
+  section: HTMLElement,
+  heroEl: HTMLDivElement | null,
+  ingredientRefs: RefObject<(HTMLDivElement | null)[]>,
+  ingredients: MenuIngredientConfig[]
+) {
+  const ctx = gsap.context(() => {
+    ingredients.forEach((ingredient, index) => {
+      const el = ingredientRefs.current[index];
+      if (!el) {
+        return;
+      }
+
+      const shift = MENU_MOBILE_SCROLL_SHIFT * ingredient.depth;
+
+      gsap.fromTo(
+        el,
+        { x: -shift * 0.4, y: shift * 0.25 },
+        {
+          x: shift * 0.6,
+          y: -shift * 0.35,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            ...MOBILE_SCROLL_TRIGGER,
+            scrub: 0.6
+          }
+        }
+      );
+    });
+
+    if (heroEl) {
+      gsap.fromTo(
+        heroEl,
+        { y: 8 },
+        {
+          y: -8,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            ...MOBILE_SCROLL_TRIGGER,
+            scrub: 0.8
+          }
+        }
+      );
+    }
+  }, section);
+
+  return () => ctx.revert();
+}
 
 export function useMenuShowcaseParallax({
   sectionRef,
@@ -47,6 +107,11 @@ export function useMenuShowcaseParallax({
     }
 
     const media = window.matchMedia(DESKTOP_QUERY);
+
+    if (!media.matches) {
+      return setupMobileScrollParallax(section, heroRef.current, ingredientRefs, ingredients);
+    }
+
     const max = MENU_PARALLAX_MAX_SHIFT;
 
     const layers = ingredients.flatMap((ingredient, index) => {
@@ -128,7 +193,7 @@ export function useMenuShowcaseParallax({
     };
 
     const onPointerMove = (event: PointerEvent) => {
-      if (!isActiveRef.current || !media.matches) {
+      if (!isActiveRef.current) {
         return;
       }
       const rect = section.getBoundingClientRect();

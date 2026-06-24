@@ -97,6 +97,9 @@ export const MENU_PARALLAX_BASE_LERP = 0.09;
 /** Max parallax shift in pixels (desktop). */
 export const MENU_PARALLAX_MAX_SHIFT = 26;
 
+/** Max scroll-scrub shift in pixels (mobile), scaled by each ingredient's depth. */
+export const MENU_MOBILE_SCROLL_SHIFT = 18;
+
 /** Hero dish uses a fraction of ingredient movement. */
 export const MENU_HERO_PARALLAX_DEPTH = 0.18;
 
