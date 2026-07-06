@@ -6,12 +6,26 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { fadeInFromTop, fadeInFromBottom, fadeInFromLeft, fadeInFromRight } from "./imageAnimation";
 import { typography } from "@/lib/typography";
 import { useTranslation } from "react-i18next";
+import { useWebContent } from "@/components/WebContentProvider";
 import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
+/** V-notch at bottom (room image). */
+const CLIP_VERTEX_BOTTOM =
+  "[clip-path:polygon(0_0,100%_0,100%_80%,50%_100%,0_80%)]";
+
+/** V-notch at top (food image) — mirror of CLIP_VERTEX_BOTTOM. */
+const CLIP_VERTEX_TOP =
+  "[clip-path:polygon(0_100%,100%_100%,100%_20%,50%_0,0_20%)]";
+
+/** Matches native PNG width (415px) for TZH_V1.png and fish_soup.png. */
+const EXPERIENCE_IMAGE_FRAME_CLASS =
+  "relative mx-auto h-[650px] w-full max-w-[415px] overflow-hidden";
+
 export default function ExperienceSection() {
     const { t } = useTranslation();
+    const { text } = useWebContent();
     const sectionRef = useRef<HTMLElement>(null);
     const firstRowRef = useRef<HTMLDivElement>(null);
     const secondRowRef = useRef<HTMLDivElement>(null);
@@ -72,23 +86,22 @@ export default function ExperienceSection() {
         >
             <div ref={firstRowRef} className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[420px_1fr] lg:gap-16">
                 {/* Left image */}
-                <div ref={roomImageRef} className="relative h-[650px] w-full overflow-hidden [clip-path:polygon(0_0,100%_0,100%_80%,50%_100%,0_80%)]">
-                    {/* Use next/image in your real file */}
+                <div ref={roomImageRef} className={`${EXPERIENCE_IMAGE_FRAME_CLASS} ${CLIP_VERTEX_BOTTOM}`}>
                     <Image
                         src="/placeholders/TZH_V1.png"
                         alt={t("experiencesShowcase.roomImageAlt")}
                         fill
                         className="h-full w-full object-cover"
-                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        sizes="(max-width: 1024px) 415px, 415px"
                     />
                 </div>
                 {/* Right text */}
                 <div ref={roomcontentRef} className="max-w-[560px] text-left">
                 <h2 id="experiences-showcase-room-heading" className={`${typography.sectionTitle} text-white`}>
-                    {t("experiencesShowcase.roomHeading")}
+                    {text("room_experience_title", "experiencesShowcase.roomHeading")}
                 </h2>
                 <p className={`${typography.paragraph} mt-4 text-white/85`}>
-                    {t("experiencesShowcase.roomDescription")}
+                    {text("room_experience_description", "experiencesShowcase.roomDescription")}
                 </p>
                 </div>
             </div>
@@ -97,21 +110,20 @@ export default function ExperienceSection() {
                 {/* Left text */}
                 <div ref={foodcontentRef} className="max-w-[560px] text-right">
                 <h2 id="experiences-showcase-food-heading" className={`${typography.sectionTitle} text-white`}>
-                    {t("experiencesShowcase.foodHeading")}
+                    {text("dinning_experience_title", "experiencesShowcase.foodHeading")}
                 </h2>
                 <p className={`${typography.paragraph} mt-4 text-white/85`}>
-                    {t("experiencesShowcase.foodDescription")}
+                    {text("dinning_experience_description", "experiencesShowcase.foodDescription")}
                 </p>
                 </div>
                 {/* Right image */}
-                <div ref={foodImageRef} className="relative h-[720px] w-full overflow-hidden [clip-path:polygon(100%_100%,0_100%,0_22%,50%_0,100%_22%)]">
-                    {/* Use next/image in your real file */}
+                <div ref={foodImageRef} className={`${EXPERIENCE_IMAGE_FRAME_CLASS} ${CLIP_VERTEX_TOP}`}>
                     <Image
                         src="/placeholders/fish_soup.png"
                         alt={t("experiencesShowcase.foodImageAlt")}
                         fill
-                        className="h-full w-full object-cover"
-                        sizes="(max-width: 415px) 100vw, 33vw"
+                        className="h-full w-full object-cover object-center"
+                        sizes="(max-width: 1024px) 415px, 415px"
                     />
                 </div>
             </div>

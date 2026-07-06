@@ -12,9 +12,6 @@
     "parking": "Parking"
   },
   "hero": {
-    "eyebrow": "Hong Kong . Private Chinese Kitchen",
-    "title": "An intimate Cantonese and Chiu Chow dining journey",
-    "description": "Seasonal ingredients, chef-led tasting menus, and bespoke hospitality for a memorable evening",
     "reserveTable": "Reserve a Table",
     "viewMenu": "View Menu",
     "logoAlt": "Tai Zi Hui logo",
@@ -23,8 +20,6 @@
   },
   "menuShowcase": {
     "sectionLabel": "Menu showcase",
-    "Title": "Crafted Ingredients",
-    "Description": "Every ingredient carries a story of the earth, the sea, and the seasons—curated thoughtfully to bring nature's poetry to life",
     "ingredient1Alt": "Dried abalone",
     "ingredient2Alt": "Tea leaf sprig",
     "ingredient3Alt": "Mandarin orange peel",
@@ -35,8 +30,6 @@
   },
   "menuPage": {
     "eyebrow": "Curated Cantonese Menu",
-    "title": "A Selection of Signature Dishes",
-    "description": "Each dish is prepared with seasonal produce, refined Cantonese techniques, and the chef's dedication to balance, aroma, and texture.",
     "items": {
       "6452": {
         "name": "Crispy Pickled Radish with Sauce",
@@ -109,8 +102,6 @@
     }
   },
   "locationSection": {
-    "title": "The Heart of Tsim Sha Tsui",
-    "description": "Discreetly located on Prince Tower's 3rd floor along Peking Road, our private kitchen offers elite Chinese dining with absolute privacy.",
     "leftImageAlt": "Morning image",
     "rightImageAlt": "Evening image",
     "address": "3/F, Prince Tower, 12A Peking Road, Tsim Sha Tsui",
@@ -120,8 +111,6 @@
   "parkingSection": {
     "sectionLabel": "Nearby parking information",
     "eyebrow": "PARKING NEARBY",
-    "title": "Nearby Parking",
-    "description": "Tai Zi Hui does not provide on-site parking. Guests arriving by car may use nearby mall car parks within walking distance.",
     "note": "Parking fees and availability are managed by each mall and may vary by time.",
     "walkingTime": "{{minutes}} min walk",
     "imagePlaceholder": "Image coming soon",
@@ -162,16 +151,10 @@
   "experiencesShowcase": {
     "sectionLabel": "Experiences showcase",
     "roomImageAlt": "V1 image",
-    "roomHeading": "Private Space",
-    "roomDescription": "Our private space is designed to provide a intimate and comfortable dining experience. It is equipped with a private dining area, a private bar, and a private restroom. It is the perfect place for a private dinner or a business meeting.",
-    "foodImageAlt": "fish soup image",
-    "foodHeading": "Dining Experience",
-    "foodDescription": "Our dining experience is designed to provide a unique and memorable dining experience. It is equipped with a private dining area, a private bar, and a private restroom. It is the perfect place for a private dinner or a business meeting."
+    "foodImageAlt": "fish soup image"
   },
   "signatureFood": {
     "sectionLabel": "Signature dishes carousel",
-    "title": "Signature Dishes",
-    "description": "Click any dish to bring it to center and explore our chef's signature creations.",
     "focusDish": "Focus on {{dish}}",
     "items": {
       "a": {
@@ -206,9 +189,6 @@
   },
   "footer": {
     "sectionLabel": "Footer",
-    "eyebrow": "PLAN YOUR VISIT",
-    "title": "Reserve Your Table",
-    "description": "For reservations and private dining inquiries, contact us directly and our team will help arrange your visit.",
     "bookNow": "Book Now",
     "bookNowLink": "#",
     "whatsappCta": "WhatsApp Us",
@@ -231,7 +211,7 @@
     "hoursTitle": "Hours",
     "hoursWeekday": "Mon - Fri: 12:00 - 15:00, 18:00 - 23:00",
     "hoursWeekend": "Sat - Sun: 12:00 - 23:00",
-    "parkingNote": "No on-site parking. Nearby options: iSQUARE and Silvercord.",
+    "parkingNote": "No on-site parking. Nearby options: iSQUARE, Silvercord, H Zentre, and One Peking.",
     "brandWordmark": "PRIVATE KITCHEN",
     "copyright": "Copyright {{year}} Tai Zi Hui. All rights reserved.",
     "privacy": "Privacy Policy",
@@ -259,9 +239,6 @@
     "label": "WhatsApp Us"
   },
   "booking": {
-    "eyebrow": "Private Dining Reservation",
-    "title": "Reserve Your Table",
-    "description": "Share your dining preferences and our team will confirm your reservation.",
     "backHome": "Back to home",
     "guestUnit": "guests",
     "largeGroupLabel": "13+",

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useMemo, useState, type SubmitEventHandler } from "react";
 import { useTranslation } from "react-i18next";
+import { useWebContent } from "@/components/WebContentProvider";
 import BookingCalendar from "@/components/booking/BookingCalendar";
 import {
   BOOKING_BUDGET_MAX,
@@ -89,7 +90,7 @@ export default function BookingPageContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-
+  const { text } = useWebContent();
   const isLargeGroupSelected = form.guests !== null && form.guests >= BOOKING_LARGE_GROUP_MIN;
 
   const timeSlots = form.mealPeriod === "lunch" ? BOOKING_LUNCH_SLOTS : BOOKING_DINNER_SLOTS;
@@ -215,9 +216,9 @@ export default function BookingPageContent() {
 
       <section className="relative border-b border-white/10 pt-30 pb-8 sm:pt-28 sm:pb-10">
         <div className="mx-auto max-w-[760px] px-6">
-          <p className={`${typography.eyebrow} text-[#e8cb75]/85`}>{t("booking.eyebrow")}</p>
-          <h1 className={`${typography.sectionTitle} mt-3 text-white/95`}>{t("booking.title")}</h1>
-          <p className={`${typography.paragraph} mt-4 max-w-[52ch] text-white/72`}>{t("booking.description")}</p>
+          <p className={`${typography.eyebrow} text-[#e8cb75]/85`}>{text("booking_eyebrow", "booking.eyebrow")}</p>
+          <h1 className={`${typography.sectionTitle} mt-3 text-white/95`}>{text("booking_title", "booking.title")}</h1>
+          <p className={`${typography.paragraph} mt-4 max-w-[52ch] text-white/72`}>{text("booking_description", "booking.description")}</p>
         </div>
       </section>
 

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { useWebContent } from "@/components/WebContentProvider";
 import { typography } from "@/lib/typography";
 
 type ParkingLotKey = "isquare" | "silvercord" | "hzentre" | "onepeking";
@@ -11,7 +12,7 @@ const PARKING_LOTS: ParkingLotKey[] = ["isquare", "silvercord", "hzentre", "onep
 
 export default function ParkingSection() {
   const { t } = useTranslation();
-
+  const { text } = useWebContent();
   return (
     <section
       id="parking-info"
@@ -21,8 +22,8 @@ export default function ParkingSection() {
       <div className="mx-auto w-full max-w-[1200px] px-6">
         <div className="mx-auto max-w-[72ch] text-center">
           <p className={`${typography.eyebrow} text-white/55`}>{t("parkingSection.eyebrow")}</p>
-          <h2 className={`${typography.sectionTitle} mt-3 text-white/95`}>{t("parkingSection.title")}</h2>
-          <p className={`${typography.paragraph} mt-6 text-white/74`}>{t("parkingSection.description")}</p>
+          <h2 className={`${typography.sectionTitle} mt-3 text-white/95`}>{text("parking_title", "parkingSection.title")}</h2>
+          <p className={`${typography.paragraph} mt-6 text-white/74`}>{text("parking_description", "parkingSection.description")}</p>
           <p className={`${typography.caption} mt-4 text-white/56`}>{t("parkingSection.note")}</p>
         </div>
 

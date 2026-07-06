@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import { useWebContent } from "@/components/WebContentProvider";
 import { menuPageDishes } from "@/lib/menuPage.config";
 import { typography } from "@/lib/typography";
 
 export default function MenuPageContent() {
   const { t } = useTranslation();
-
+  const { text } = useWebContent();
   return (
     <main className="bg-[#08080b] text-white">
       <section className="relative isolate overflow-hidden border-b border-white/10 pt-44 pb-20 sm:pt-48 sm:pb-24">
@@ -24,9 +25,9 @@ export default function MenuPageContent() {
         </div>
 
         <div className="relative mx-auto max-w-[1200px] px-6">
-          <p className={`${typography.eyebrow} text-[#e8cb75]/85`}>{t("menuPage.eyebrow")}</p>
-          <h1 className={`${typography.sectionTitle} mt-3 max-w-[16ch] text-white/95`}>{t("menuPage.title")}</h1>
-          <p className={`${typography.paragraph} mt-6 max-w-[70ch] text-white/74`}>{t("menuPage.description")}</p>
+          <p className={`${typography.eyebrow} text-[#e8cb75]/85`}>{text("menu_page_eyebrow", "menuPage.eyebrow")}</p>
+          <h1 className={`${typography.sectionTitle} mt-3 max-w-[16ch] text-white/95`}>{text("menu_page_title", "menuPage.title")}</h1>
+          <p className={`${typography.paragraph} mt-6 max-w-[70ch] text-white/74`}>{text("menu_page_description", "menuPage.description")}</p>
         </div>
       </section>
 

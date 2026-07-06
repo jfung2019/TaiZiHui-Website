@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useWebContent } from "@/components/WebContentProvider";
 import SealGeometry from "@/components/menu-showcase/SealGeometry";
 import { useMenuShowcaseEntrance } from "@/components/menu-showcase/useMenuShowcaseEntrance";
 import { useMenuShowcaseParallax } from "@/components/menu-showcase/useMenuShowcaseParallax";
@@ -14,6 +15,7 @@ import { typography } from "@/lib/typography";
 
 export default function MenuShowcase() {
   const { t } = useTranslation();
+  const { text } = useWebContent();
   const sectionRef = useRef<HTMLElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
@@ -112,13 +114,13 @@ export default function MenuShowcase() {
               id="menu-showcase-heading"
               className={`${typography.sectionTitle} m-0 text-center text-white/95 will-change-[clip-path,opacity]`}
             >
-              {t("menuShowcase.Title")}
+              {text("menushowcase_title", "menuShowcase.Title")}
             </h2>
             <p
               ref={descriptionRef}
               className={`${typography.paragraph} mt-6 text-center text-white/72 will-change-[opacity,transform]`}
             >
-              {t("menuShowcase.Description")}
+              {text("menushowcase_description", "menuShowcase.Description")}
             </p>
           </div>
         </div>

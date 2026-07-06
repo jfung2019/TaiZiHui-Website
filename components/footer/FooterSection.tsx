@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { useWebContent } from "@/components/WebContentProvider";
 import { typography } from "@/lib/typography";
 
 export default function FooterSection() {
   const { t } = useTranslation();
+  const { text } = useWebContent();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -17,9 +19,9 @@ export default function FooterSection() {
       <div className="mx-auto w-full max-w-[1200px] px-6">
         <div className="grid grid-cols-1 gap-8 border-b border-white/10 pb-10 sm:pb-12 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
           <div>
-            <p className={`${typography.eyebrow} text-white/55`}>{t("footer.eyebrow")}</p>
-            <h2 className={`${typography.sectionTitle} mt-3 text-white/95`}>{t("footer.title")}</h2>
-            <p className={`${typography.paragraph} mt-5 max-w-[56ch] text-white/72`}>{t("footer.description")}</p>
+            <p className={`${typography.eyebrow} text-white/55`}>{text("footer_eyebrow", "footer.eyebrow")}</p>
+            <h2 className={`${typography.sectionTitle} mt-3 text-white/95`}>{text("footer_title", "footer.title")}</h2>
+            <p className={`${typography.paragraph} mt-5 max-w-[56ch] text-white/72`}>{text("footer_description", "footer.description")}</p>
           </div>
           <div className="flex flex-wrap items-center gap-3 md:justify-end">
             <Link

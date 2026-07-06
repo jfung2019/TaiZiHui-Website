@@ -12,9 +12,6 @@
     "parking": "泊車"
   },
   "hero": {
-    "eyebrow": "香港 · 私房中菜",
-    "title": "一場親密而精緻的粵菜與潮州菜饗宴",
-    "description": "以時令食材、主廚主理品嚐菜單與貼心款待，為您打造難忘的夜晚",
     "reserveTable": "預約訂座",
     "viewMenu": "查看菜單",
     "logoAlt": "太子薈標誌",
@@ -23,8 +20,6 @@
   },
   "menuShowcase": {
     "sectionLabel": "菜單展示",
-    "Title": "匠心食材",
-    "Description": "一箸一餚，皆是山海與歲月的饋贈。我們追隨四季更迭的步伐，將大自然的詩意，化作盤中溫潤而深刻的百般滋味",
     "ingredient1Alt": "乾鮑魚",
     "ingredient2Alt": "茶葉",
     "ingredient3Alt": "陳皮",
@@ -34,9 +29,6 @@
     "seeMenuAriaLabel": "查看菜單"
   },
   "menuPage": {
-    "eyebrow": "粵菜精選菜譜",
-    "title": "太子滙招牌菜式",
-    "description": "每一道菜式皆取材時令，結合粵菜細膩火候與主廚匠心，呈現香氣、口感與層次兼備的高級中菜體驗。",
     "items": {
       "6452": {
         "name": "醬脆蘿蔔",
@@ -109,8 +101,6 @@
     }
   },
   "locationSection": {
-    "title": "尖沙咀心臟地帶",
-    "description": "太子滙隱身於尖沙咀太子集團中心三樓，坐擁鬧市中的靜謐天地。我們提供頂級中菜，私密而尊貴的用餐體驗。",
     "leftImageAlt": "清晨圖片",
     "rightImageAlt": "黃昏圖片",
     "address": "尖沙咀北京道 12A 號太子集團中心 3 樓",
@@ -120,8 +110,6 @@
   "parkingSection": {
     "sectionLabel": "附近泊車資訊",
     "eyebrow": "附近泊車",
-    "title": "泊車資訊",
-    "description": "太子滙未設店內泊車位。駕車前來的客人可使用步行距離內商場停車場。",
     "note": "車位供應及收費由商場管理，會因時段而有所不同。",
     "walkingTime": "步行約 {{minutes}} 分鐘",
     "imagePlaceholder": "圖片稍後提供",
@@ -162,16 +150,10 @@
   "experiencesShowcase": {
     "sectionLabel": "用餐體驗展示",
     "roomImageAlt": "V1圖片",
-    "roomHeading": "私密空間",
-    "roomDescription": "我們的私密空間設計為提供一場親密而舒適的用餐體驗，是舉辦私人晚餐或商務會議的完美場所。",
-    "foodImageAlt": "魚湯圖片",
-    "foodHeading": "用餐體驗",
-    "foodDescription": "我們的用餐體驗設計為提供一場獨特而難忘的用餐體驗，是舉辦私人晚餐或商務會議的完美場所。"
+    "foodImageAlt": "魚湯圖片"
   },
   "signatureFood": {
     "sectionLabel": "招牌菜輪播",
-    "title": "招牌菜式",
-    "description": "點擊任一菜式即可將其置中，探索主廚精選招牌之作。",
     "focusDish": "聚焦 {{dish}}",
     "items": {
       "a": {
@@ -206,9 +188,6 @@
   },
   "footer": {
     "sectionLabel": "頁尾",
-    "eyebrow": "規劃您的到訪",
-    "title": "立即訂座",
-    "description": "如需訂座或私人宴會查詢，歡迎直接聯絡我們，團隊將協助安排您的用餐體驗。",
     "bookNow": "立即訂座",
     "bookNowLink": "#",
     "whatsappCta": "WhatsApp 聯絡",
@@ -231,7 +210,7 @@
     "hoursTitle": "營業時間",
     "hoursWeekday": "週一至週五：12:00 - 15:00，18:00 - 23:00",
     "hoursWeekend": "週六至週日：12:00 - 23:00",
-    "parkingNote": "店內未設泊車位，可使用附近 iSQUARE 及 Silvercord 停車場。",
+    "parkingNote": "店內未設泊車位，可使用附近 iSQUARE、Silvercord、H Zentre 及 One Peking 停車場。",
     "brandWordmark": "PRIVATE KITCHEN",
     "copyright": "Copyright {{year}} 太子滙。版權所有。",
     "privacy": "私隱政策",
@@ -259,9 +238,7 @@
     "label": "WhatsApp 聯絡"
   },
   "booking": {
-    "eyebrow": "私人宴會訂座",
-    "title": "預約訂座",
-    "description": "請填寫您的用餐偏好，我們的團隊將為您確認訂座安排。",
+
     "backHome": "返回首頁",
     "guestUnit": "位",
     "largeGroupLabel": "13+",

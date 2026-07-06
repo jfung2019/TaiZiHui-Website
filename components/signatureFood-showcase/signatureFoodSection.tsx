@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useLayoutEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useWebContent } from "@/components/WebContentProvider";
 import gsap from "gsap";
 import { typography } from "@/lib/typography";
 import { rotateTriplet, setToSlot } from "@/components/signatureFood-showcase/foodAnimation";
@@ -30,6 +31,7 @@ type CarouselOrder = [string, string, string];
 
 export default function SignatureFoodSection() {
   const { t } = useTranslation();
+  const { text } = useWebContent();
   const sectionRef = useRef<HTMLElement>(null);
   const itemRefs = useRef<Record<string, HTMLElement | null>>({
     a: null,
@@ -132,10 +134,10 @@ export default function SignatureFoodSection() {
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-[68ch] text-center">
           <h2 id="signature-food-heading" className={`${typography.sectionTitle} m-0 text-white/95`}>
-            {t("signatureFood.title")}
+            {text("signature_food_title", "signatureFood.title")}
           </h2>
           <p className={`${typography.paragraph} mt-4 text-white/72`}>
-            {t("signatureFood.description")}
+            {text("signature_food_description", "signatureFood.description")}
           </p>
         </div>
       </div>
