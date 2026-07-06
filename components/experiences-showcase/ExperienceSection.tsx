@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { fadeInFromTop, fadeInFromBottom, fadeInFromLeft, fadeInFromRight } from "./imageAnimation";
 import { typography } from "@/lib/typography";
 import { useTranslation } from "react-i18next";
+import { useWebContent } from "@/components/WebContentProvider";
 import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,6 +25,7 @@ const EXPERIENCE_IMAGE_FRAME_CLASS =
 
 export default function ExperienceSection() {
     const { t } = useTranslation();
+    const { text } = useWebContent();
     const sectionRef = useRef<HTMLElement>(null);
     const firstRowRef = useRef<HTMLDivElement>(null);
     const secondRowRef = useRef<HTMLDivElement>(null);
@@ -96,10 +98,10 @@ export default function ExperienceSection() {
                 {/* Right text */}
                 <div ref={roomcontentRef} className="max-w-[560px] text-left">
                 <h2 id="experiences-showcase-room-heading" className={`${typography.sectionTitle} text-white`}>
-                    {t("experiencesShowcase.roomHeading")}
+                    {text("room_experience_title", "experiencesShowcase.roomHeading")}
                 </h2>
                 <p className={`${typography.paragraph} mt-4 text-white/85`}>
-                    {t("experiencesShowcase.roomDescription")}
+                    {text("room_experience_description", "experiencesShowcase.roomDescription")}
                 </p>
                 </div>
             </div>
@@ -108,10 +110,10 @@ export default function ExperienceSection() {
                 {/* Left text */}
                 <div ref={foodcontentRef} className="max-w-[560px] text-right">
                 <h2 id="experiences-showcase-food-heading" className={`${typography.sectionTitle} text-white`}>
-                    {t("experiencesShowcase.foodHeading")}
+                    {text("dinning_experience_title", "experiencesShowcase.foodHeading")}
                 </h2>
                 <p className={`${typography.paragraph} mt-4 text-white/85`}>
-                    {t("experiencesShowcase.foodDescription")}
+                    {text("dinning_experience_description", "experiencesShowcase.foodDescription")}
                 </p>
                 </div>
                 {/* Right image */}

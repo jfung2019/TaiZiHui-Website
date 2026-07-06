@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useWebContent } from "@/components/WebContentProvider";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { typography } from "@/lib/typography";
@@ -12,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function LocationSection() {
   const { t } = useTranslation();
+  const { text } = useWebContent();
   const sectionRef = useRef<HTMLElement>(null);
   const leftImageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -75,10 +77,10 @@ export default function LocationSection() {
         >
           <div className="max-w-[34ch]">
             <h2 id="experience-heading" className={`${typography.sectionTitle} m-0 text-white/95`}>
-              {t("locationSection.title")}
+              {text("location_title", "locationSection.title")}
             </h2>
             <p className={`${typography.paragraph} mt-6 text-white/72`}>
-              {t("locationSection.description")}
+              {text("location_description", "locationSection.description")}
             </p>
             <p className={`${typography.paragraph} mt-6 text-white/72`}>
               {t("locationSection.address")}
