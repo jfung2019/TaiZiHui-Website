@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState, type SubmitEventHandler } from "react";
+import { useEffect, useMemo, useState, type SubmitEventHandler } from "react";
 import { useTranslation } from "react-i18next";
 import { useWebContent } from "@/components/WebContentProvider";
 import BookingCalendar from "@/components/booking/BookingCalendar";
@@ -18,12 +18,20 @@ import {
   BOOKING_LUNCH_SLOTS,
   BOOKING_INGREDIENT_PAGE_SIZE,
   BOOKING_PREORDER_PAGE_SIZE,
-  bookingIngredients,
-  bookingPreOrderItems,
   type BookingMealPeriod
 } from "@/lib/booking.config";
 import { createBookingFromBackend } from "@/lib/services/createBooking.service";
 import { typography } from "@/lib/typography";
+import { 
+  fetchPreOrderRequiredItemsFromBackend,
+  type MenuItemRecord,
+  type MenuItemViewModel,
+  toMenuItemViewModel,
+  fetchIngredientsFromBackend,
+  type IngredientRecord,
+  type IngredientViewModel,
+  toIngredientViewModel
+} from "@/lib/services/mediaLoader.service";
 
 type BookingFormState = {
   name: string;
@@ -53,6 +61,10 @@ const initialFormState: BookingFormState = {
   allergy: ""
 };
 
+function resolveLocale(language: string) {
+  return language === "zh-TW" ? "zh-TW" : "en";
+}
+
 function SectionHeader({ title }: { title: string }) {
   return (
     <div className="mb-4">
@@ -79,6 +91,7 @@ function isValidHkTel(tel: string) {
 
 export default function BookingPageContent() {
   const { t, i18n } = useTranslation();
+  const locale = resolveLocale(i18n.language);
   const [form, setForm] = useState<BookingFormState>(initialFormState);
   const [preOrderPage, setPreOrderPage] = useState(0);
   const [ingredientPage, setIngredientPage] = useState(0);
@@ -90,22 +103,45 @@ export default function BookingPageContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [preOrderRecords, setPreOrderRecords] = useState<MenuItemRecord[]>([]);
+  const [ingredientRecords, setIngredientRecords] = useState<IngredientRecord[]>([]);
   const { text } = useWebContent();
   const isLargeGroupSelected = form.guests !== null && form.guests >= BOOKING_LARGE_GROUP_MIN;
 
   const timeSlots = form.mealPeriod === "lunch" ? BOOKING_LUNCH_SLOTS : BOOKING_DINNER_SLOTS;
-  const preOrderPageCount = Math.ceil(bookingPreOrderItems.length / BOOKING_PREORDER_PAGE_SIZE);
-  const ingredientPageCount = Math.ceil(bookingIngredients.length / BOOKING_INGREDIENT_PAGE_SIZE);
+
+  const preOrderItems = useMemo<MenuItemViewModel[]>(
+    () => preOrderRecords.map((item) => toMenuItemViewModel(item, locale)),
+    [preOrderRecords, locale]
+  );
+
+  const ingredientItems = useMemo<IngredientViewModel[]>(
+    () => ingredientRecords.map((item) => toIngredientViewModel(item, locale)),
+    [ingredientRecords, locale]
+  );
+
+  const preOrderPageCount = Math.max(1, Math.ceil(preOrderItems.length / BOOKING_PREORDER_PAGE_SIZE));
+  const ingredientPageCount = Math.max(1, Math.ceil(ingredientItems.length / BOOKING_INGREDIENT_PAGE_SIZE));
 
   const visiblePreOrderItems = useMemo(() => {
     const start = preOrderPage * BOOKING_PREORDER_PAGE_SIZE;
-    return bookingPreOrderItems.slice(start, start + BOOKING_PREORDER_PAGE_SIZE);
-  }, [preOrderPage]);
+    return preOrderItems.slice(start, start + BOOKING_PREORDER_PAGE_SIZE);
+  }, [preOrderPage, preOrderItems]);
 
   const visibleIngredients = useMemo(() => {
     const start = ingredientPage * BOOKING_INGREDIENT_PAGE_SIZE;
-    return bookingIngredients.slice(start, start + BOOKING_INGREDIENT_PAGE_SIZE);
-  }, [ingredientPage]);
+    return ingredientItems.slice(start, start + BOOKING_INGREDIENT_PAGE_SIZE);
+  }, [ingredientPage, ingredientItems]);
+
+  const preOrderLabelById = useMemo(
+    () => Object.fromEntries(preOrderItems.map((item) => [item.id, item.name])),
+    [preOrderItems]
+  );
+
+  const ingredientLabelById = useMemo(
+    () => Object.fromEntries(ingredientItems.map((item) => [item.id, item.name])),
+    [ingredientItems]
+  );
 
   const togglePreOrder = (id: string) => {
     setForm((current) => ({
@@ -183,8 +219,8 @@ export default function BookingPageContent() {
         timeSlot: form.timeSlot,
         mealPeriod: form.mealPeriod,
         numberOfCustomers: form.guests,
-        preOrderLabels: form.preOrderIds.map((id) => t(`menuPage.items.${id}.name`)),
-        ingredientLabels: form.ingredientIds.map((id) => t(`booking.ingredients.${id}`)),
+        preOrderLabels: form.preOrderIds.map((id) => preOrderLabelById[id] ?? id),
+        ingredientLabels: form.ingredientIds.map((id) => ingredientLabelById[id] ?? id),
         specialRequests: form.specialRequests,
         allergy: form.allergy,
         budget: form.budget
@@ -202,6 +238,46 @@ export default function BookingPageContent() {
       setIsSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetchPreOrderRequiredItemsFromBackend()
+      .then((items) => {
+        if (!cancelled) {
+          setPreOrderRecords(items);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setPreOrderRecords([]);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetchIngredientsFromBackend()
+      .then((items) => {
+        if (!cancelled) {
+          setIngredientRecords(items);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setIngredientRecords([]);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#070707] text-white">
@@ -413,15 +489,15 @@ export default function BookingPageContent() {
                     >
                       <div className="relative aspect-square overflow-hidden rounded-lg border border-[#e8cb75]/35 bg-black/40">
                         <Image
-                          src={item.imageSrc}
-                          alt={t(`menuPage.items.${item.id}.name`)}
+                          src={item.imageUrl}
+                          alt={item.name}
                           fill
                           sizes="(max-width: 768px) 30vw, 120px"
                           className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                         />
                       </div>
                       <p className={`${typography.caption} mt-2 line-clamp-2 text-[#e8cb75]/95`}>
-                        {t(`menuPage.items.${item.id}.name`)}
+                        {item.name}
                       </p>
                     </button>
                   );
@@ -478,14 +554,14 @@ export default function BookingPageContent() {
                     >
                       <div className="relative aspect-square overflow-hidden rounded-lg border border-[#e8cb75]/35 bg-black/40">
                         <Image
-                          src={item.imageSrc}
-                          alt={t(`booking.ingredients.${item.id}`)}
+                          src={item.imageUrl}
+                          alt={item.name}
                           fill
                           sizes="(max-width: 768px) 30vw, 120px"
                           className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                         />
                       </div>
-                      <p className={`${typography.caption} mt-2 text-[#e8cb75]/95`}>{t(`booking.ingredients.${item.id}`)}</p>
+                      <p className={`${typography.caption} mt-2 text-[#e8cb75]/95`}>{item.name}</p>
                     </button>
                   );
                 })}

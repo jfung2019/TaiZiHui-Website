@@ -3,12 +3,50 @@
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { useWebContent } from "@/components/WebContentProvider";
-import { menuPageDishes } from "@/lib/menuPage.config";
+import { 
+  fetchMenuItemsFromBackend, 
+  type MenuItemViewModel, 
+  type MenuItemRecord,
+  toMenuItemViewModel 
+} from "@/lib/services/mediaLoader.service";
 import { typography } from "@/lib/typography";
+import { useEffect, useMemo, useState } from "react";
+
+function resolveLocale(language: string) {
+  return language === "zh-TW" ? "zh-TW" : "en";
+}
 
 export default function MenuPageContent() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { text } = useWebContent();
+  const locale = resolveLocale(i18n.language);
+  const [menuRecords, setMenuRecords] = useState<MenuItemRecord[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetchMenuItemsFromBackend()
+      .then((items) => {
+        if (!cancelled) {
+          setMenuRecords(items);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setMenuRecords([]);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const menuItems = useMemo<MenuItemViewModel[]>(
+    () => menuRecords.map((item) => toMenuItemViewModel(item, locale)),
+    [menuRecords, locale]
+  );
+   
   return (
     <main className="bg-[#08080b] text-white">
       <section className="relative isolate overflow-hidden border-b border-white/10 pt-44 pb-20 sm:pt-48 sm:pb-24">
@@ -34,23 +72,23 @@ export default function MenuPageContent() {
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-[1200px] px-6">
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {menuPageDishes.map((dish) => (
+            {menuItems.map((item) => (
               <article
-                key={dish.id}
+                key={item.id}
                 className="overflow-hidden rounded-sm border border-white/12 bg-white/[0.02] transition-colors duration-200 hover:border-[#e8cb75]/55"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/30">
                   <Image
-                    src={dish.imageSrc}
-                    alt={t(`menuPage.items.${dish.id}.name`)}
+                    src={item.imageUrl}
+                    alt={item.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                     className="object-cover transition-transform duration-500 ease-out hover:scale-[1.03]"
                   />
                 </div>
                 <div className="px-5 py-5 sm:px-6 sm:py-6">
-                  <h2 className={`${typography.button} text-white`}>{t(`menuPage.items.${dish.id}.name`)}</h2>
-                  <p className={`${typography.paragraph} mt-3 text-white/72`}>{t(`menuPage.items.${dish.id}.description`)}</p>
+                  <h2 className={`${typography.button} text-white`}>{item.name}</h2>
+                  <p className={`${typography.paragraph} mt-3 text-white/72`}>{item.description}</p>
                 </div>
               </article>
             ))}
