@@ -19,9 +19,25 @@ function isSameDay(a: Date, b: Date) {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
+function monthIndex(date: Date) {
+  return date.getFullYear() * 12 + date.getMonth();
+}
+
 export default function BookingCalendar({ selectedDate, onSelectDate }: BookingCalendarProps) {
   const { t, i18n } = useTranslation();
   const today = useMemo(() => startOfDay(new Date()), []);
+  const firstBookableMonth = useMemo(
+    () => new Date(today.getFullYear(), today.getMonth(), 1),
+    [today]
+  );
+  const lastBookableMonth = useMemo(
+    () => new Date(today.getFullYear(), today.getMonth() + 1, 1),
+    [today]
+  );
+  const lastBookableDay = useMemo(
+    () => startOfDay(new Date(lastBookableMonth.getFullYear(), lastBookableMonth.getMonth() + 1, 0)),
+    [lastBookableMonth]
+  );
   const [viewMonth, setViewMonth] = useState(() => new Date(today.getFullYear(), today.getMonth(), 1));
 
   const monthLabel = useMemo(
@@ -47,7 +63,8 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: BookingC
     });
   }, [viewMonth]);
 
-  const canGoPrev = viewMonth.getFullYear() > today.getFullYear() || viewMonth.getMonth() > today.getMonth();
+  const canGoPrev = monthIndex(viewMonth) > monthIndex(firstBookableMonth);
+  const canGoNext = monthIndex(viewMonth) < monthIndex(lastBookableMonth);
 
   const goPrevMonth = () => {
     if (!canGoPrev) {
@@ -57,6 +74,9 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: BookingC
   };
 
   const goNextMonth = () => {
+    if (!canGoNext) {
+      return;
+    }
     setViewMonth((current) => new Date(current.getFullYear(), current.getMonth() + 1, 1));
   };
 
@@ -78,8 +98,9 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: BookingC
         <button
           type="button"
           onClick={goNextMonth}
+          disabled={!canGoNext}
           aria-label={t("booking.calendar.nextMonth")}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-[#e8cb75] transition-colors duration-200 hover:bg-white/8"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-[#e8cb75] transition-colors duration-200 hover:bg-white/8 disabled:cursor-not-allowed disabled:opacity-30"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
             <path d="M9.3 5.3a1 1 0 0 1 1.4 0l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 1 1-1.4-1.4L13.59 11 9.3 6.7a1 1 0 0 1 0-1.4Z" />
@@ -100,10 +121,11 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: BookingC
         {calendarDays.map((date) => {
           const inCurrentMonth = date.getMonth() === viewMonth.getMonth();
           const isPast = startOfDay(date) < today;
+          const isBeyondBookableRange = startOfDay(date) > lastBookableDay;
           const isSelected = selectedDate ? isSameDay(date, selectedDate) : false;
           const isToday = isSameDay(date, today);
           const isSunday = date.getDay() === 0;
-          const disabled = !inCurrentMonth || isPast;
+          const disabled = !inCurrentMonth || isPast || isBeyondBookableRange;
 
           let dayClass = "relative flex h-10 items-center justify-center rounded-full text-sm transition-colors duration-200 sm:h-11 ";
 
