@@ -29,7 +29,6 @@
     "seeMenuAriaLabel": "See menu"
   },
   "menuPage": {
-    "eyebrow": "Curated Cantonese Menu",
     "items": {
       "6452": {
         "name": "Crispy Pickled Radish with Sauce",
@@ -156,23 +155,6 @@
   "signatureFood": {
     "sectionLabel": "Signature dishes carousel",
     "focusDish": "Focus on {{dish}}",
-    "items": {
-      "a": {
-        "alt": "Steamed crab with hand-chopped pork patty",
-        "name": "Steamed crab with hand-chopped pork patty",
-        "description": "Our signature dish is a steamed crab with hand-chopped pork patty. It is a classic Cantonese dish that is perfect for a private dinner or a business meeting."
-      },
-      "b": {
-        "alt": "Signature nostalgic gourd duck",
-        "name": "Nostalgic gourd duck",
-        "description": "Our signature dish is a nostalgic gourd duck. It is a classic Cantonese dish that is perfect for a private dinner or a business meeting."
-      },
-      "c": {
-        "alt": "Braised shark fin with hand-picked crab roe",
-        "name": "Braised shark fin with hand-picked crab roe",
-        "description": "Our signature dish is a braised shark fin with hand-picked crab roe. It is a classic Cantonese dish that is perfect for a private dinner or a business meeting."
-      }
-    },
     "seeMenuLine": "SEE MENU",
     "seeMenuAriaLabel": "See menu"
   },

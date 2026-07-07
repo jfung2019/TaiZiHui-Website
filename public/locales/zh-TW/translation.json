@@ -155,23 +155,6 @@
   "signatureFood": {
     "sectionLabel": "招牌菜輪播",
     "focusDish": "聚焦 {{dish}}",
-    "items": {
-      "a": {
-        "alt": "頂角膏蟹蒸手剁肉餅",
-        "name": "頂角膏蟹蒸手剁肉餅",
-        "description": "膏香濃郁的頂角蟹配上手剁肉餅，鮮甜與肉香交融，是太子滙極具代表性的招牌菜。"
-      },
-      "b": {
-        "alt": "懷舊葫蘆鴨",
-        "name": "懷舊葫蘆鴨",
-        "description": "外酥內嫩的古法葫蘆鴨，重現經典粵菜風味，層次豐富且回味悠長。"
-      },
-      "c": {
-        "alt": "生拆蟹皇翅",
-        "name": "生拆蟹皇翅",
-        "description": "以生拆蟹肉與蟹黃慢火燴製，湯底濃厚鮮香，盡顯奢華海味層次。"
-      }
-    },
     "seeMenuLine": "查看菜單",
     "seeMenuAriaLabel": "查看菜單"
   },

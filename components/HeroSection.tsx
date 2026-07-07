@@ -1,11 +1,43 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import HeroContent from "@/components/HeroContent";
+import {
+  fetchCarouselViewModelsFromBackend,
+  type CarouselViewModel
+} from "@/lib/services/mediaLoader.service";
+
 
 export default function HeroSection() {
   const { t } = useTranslation();
+  const [carouselItems, setCarouselItems] = useState<CarouselViewModel[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetchCarouselViewModelsFromBackend()
+      .then((items) => {
+        if (!cancelled) {
+          setCarouselItems(items);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setCarouselItems([]);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const heroImageUrl = useMemo(() => {
+    const sortedItems = [...carouselItems].sort((a, b) => a.sortOrder - b.sortOrder);
+    return sortedItems[0]?.imageUrl || "";
+  }, [carouselItems]);
 
   return (
     <section
@@ -13,7 +45,7 @@ export default function HeroSection() {
       className="relative min-h-svh overflow-hidden isolate"
     >
       <Image
-        src="/placeholders/7208.jpg"
+        src={heroImageUrl}
         alt={t("hero.heroImageAlt")}
         fill
         priority
