@@ -43,8 +43,7 @@ type BookingFormState = {
   preOrderIds: string[];
   ingredientIds: string[];
   budget: number;
-  specialRequests: string;
-  allergy: string;
+  customerRequests: string;
 };
 
 const initialFormState: BookingFormState = {
@@ -57,8 +56,7 @@ const initialFormState: BookingFormState = {
   preOrderIds: [],
   ingredientIds: [],
   budget: 1800,
-  specialRequests: "",
-  allergy: ""
+  customerRequests: ""
 };
 
 function resolveLocale(language: string) {
@@ -221,8 +219,8 @@ export default function BookingPageContent() {
         numberOfCustomers: form.guests,
         preOrderLabels: form.preOrderIds.map((id) => preOrderLabelById[id] ?? id),
         ingredientLabels: form.ingredientIds.map((id) => ingredientLabelById[id] ?? id),
-        specialRequests: form.specialRequests,
-        allergy: form.allergy,
+        specialRequests: form.customerRequests,
+        allergy: "",
         budget: form.budget
       });
 
@@ -611,26 +609,14 @@ export default function BookingPageContent() {
             </div>
           </div>
 
-          {/* Special requests */}
+          {/* Special requests & dietary notes */}
           <div className="rounded-xl border border-white/10 bg-[#101014] p-5 sm:p-6">
-            <SectionHeader title={t("booking.sections.specialRequests.title")} />
+            <SectionHeader title={t("booking.sections.notes.title")} />
             <textarea
-              value={form.specialRequests}
-              onChange={(event) => setForm((current) => ({ ...current, specialRequests: event.target.value }))}
-              rows={4}
-              placeholder={t("booking.placeholders.specialRequests")}
-              className="w-full resize-y rounded-xl border border-white/12 bg-[#141418] px-4 py-3 text-white outline-none transition-colors duration-200 placeholder:text-white/35 focus:border-[#e8cb75]/55"
-            />
-          </div>
-
-          {/* Allergy */}
-          <div className="rounded-xl border border-white/10 bg-[#101014] p-5 sm:p-6">
-            <SectionHeader title={t("booking.sections.allergy.title")} />
-            <textarea
-              value={form.allergy}
-              onChange={(event) => setForm((current) => ({ ...current, allergy: event.target.value }))}
-              rows={3}
-              placeholder={t("booking.placeholders.allergy")}
+              value={form.customerRequests}
+              onChange={(event) => setForm((current) => ({ ...current, customerRequests: event.target.value }))}
+              rows={5}
+              placeholder={t("booking.placeholders.notes")}
               className="w-full resize-y rounded-xl border border-white/12 bg-[#141418] px-4 py-3 text-white outline-none transition-colors duration-200 placeholder:text-white/35 focus:border-[#e8cb75]/55"
             />
           </div>

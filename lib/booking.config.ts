@@ -1,4 +1,4 @@
-export const BOOKING_GUEST_COUNTS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
+export const BOOKING_GUEST_COUNTS = [4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 
 export const BOOKING_HK_TEL_LENGTH = 8;
 export const BOOKING_HK_TEL_REGEX = /^\d{8}$/;
@@ -17,7 +17,7 @@ export const BOOKING_DINNER_SLOTS = [
   "20:30"
 ] as const;
 
-export const BOOKING_BUDGET_MIN = 200;
+export const BOOKING_BUDGET_MIN = 500;
 export const BOOKING_BUDGET_MAX = 3000;
 export const BOOKING_BUDGET_STEP = 100;
 

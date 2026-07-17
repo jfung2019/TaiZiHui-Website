@@ -52,7 +52,7 @@ export default function MenuPageContent() {
       <section className="relative isolate overflow-hidden border-b border-white/10 pt-44 pb-20 sm:pt-48 sm:pb-24">
         <div className="absolute inset-0">
           <Image
-            src="/menu/7208.jpg"
+            src="/menu/7208.webp"
             alt=""
             fill
             priority
