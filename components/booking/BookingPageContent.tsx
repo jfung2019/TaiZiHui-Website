@@ -20,6 +20,12 @@ import {
   BOOKING_PREORDER_PAGE_SIZE,
   type BookingMealPeriod
 } from "@/lib/booking.config";
+import {
+  fetchBlackoutDatesFromBackend,
+  getCalendarVisibleDateRange,
+  isTimeSlotBlockedByBlocker,
+  type BookingBlockerRecord
+} from "@/lib/services/blackoutDate.services";
 import { createBookingFromBackend } from "@/lib/services/createBooking.service";
 import { typography } from "@/lib/typography";
 import { 
@@ -103,10 +109,27 @@ export default function BookingPageContent() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [preOrderRecords, setPreOrderRecords] = useState<MenuItemRecord[]>([]);
   const [ingredientRecords, setIngredientRecords] = useState<IngredientRecord[]>([]);
+  const [bookingBlockers, setBookingBlockers] = useState<BookingBlockerRecord[]>([]);
   const { text } = useWebContent();
   const isLargeGroupSelected = form.guests !== null && form.guests >= BOOKING_LARGE_GROUP_MIN;
 
   const timeSlots = form.mealPeriod === "lunch" ? BOOKING_LUNCH_SLOTS : BOOKING_DINNER_SLOTS;
+  const isTimeSlotBlocked = (period: BookingMealPeriod, slot: string) => {
+    if (!form.date) {
+      return false;
+    }
+
+    const selectedDate = form.date;
+    return bookingBlockers.some((blocker) =>
+      isTimeSlotBlockedByBlocker(selectedDate, period, slot, blocker)
+    );
+  };
+  const isMealPeriodUnavailable = (period: BookingMealPeriod) => {
+    const slots = period === "lunch" ? BOOKING_LUNCH_SLOTS : BOOKING_DINNER_SLOTS;
+    return form.date !== null && slots.every((slot) => isTimeSlotBlocked(period, slot));
+  };
+  const isSelectedTimeBlocked =
+    form.timeSlot !== null && isTimeSlotBlocked(form.mealPeriod, form.timeSlot);
 
   const preOrderItems = useMemo<MenuItemViewModel[]>(
     () => preOrderRecords.map((item) => toMenuItemViewModel(item, locale)),
@@ -194,7 +217,8 @@ export default function BookingPageContent() {
     isTelValid &&
     form.guests !== null &&
     form.date !== null &&
-    form.timeSlot !== null;
+    form.timeSlot !== null &&
+    !isSelectedTimeBlocked;
 
   const handleSubmit: SubmitEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
@@ -236,6 +260,33 @@ export default function BookingPageContent() {
       setIsSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    let cancelled = false;
+    const today = new Date();
+    const currentMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+    const firstRange = getCalendarVisibleDateRange(currentMonth);
+    const lastRange = getCalendarVisibleDateRange(nextMonth);
+
+    fetchBlackoutDatesFromBackend(firstRange.fromDate, lastRange.toDate).then((items) => {
+      if (!cancelled) {
+        setBookingBlockers(items);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isSelectedTimeBlocked) {
+      return;
+    }
+
+    setForm((current) => ({ ...current, timeSlot: null }));
+  }, [isSelectedTimeBlocked]);
 
   useEffect(() => {
     let cancelled = false;
@@ -395,6 +446,7 @@ export default function BookingPageContent() {
             <BookingCalendar
               selectedDate={form.date}
               onSelectDate={(date) => setForm((current) => ({ ...current, date }))}
+              bookingBlockers={bookingBlockers}
             />
           </div>
 
@@ -404,10 +456,12 @@ export default function BookingPageContent() {
             <div className="mb-5 inline-flex rounded-full border border-white/12 bg-[#141418] p-1">
               {(["lunch", "dinner"] as const).map((period) => {
                 const selected = form.mealPeriod === period;
+                const unavailable = isMealPeriodUnavailable(period);
                 return (
                   <button
                     key={period}
                     type="button"
+                    disabled={unavailable}
                     onClick={() =>
                       setForm((current) => ({
                         ...current,
@@ -418,7 +472,11 @@ export default function BookingPageContent() {
                     className={[
                       "rounded-full px-5 py-2 transition-colors duration-200",
                       typography.button,
-                      selected ? "bg-[#b3201d] text-white" : "text-white/65 hover:text-white/90"
+                      unavailable
+                        ? "cursor-not-allowed text-white/30 line-through decoration-white/40"
+                        : selected
+                          ? "bg-[#b3201d] text-white"
+                          : "text-white/65 hover:text-white/90"
                     ].join(" ")}
                   >
                     {t(`booking.time.${period}`)}
@@ -429,14 +487,23 @@ export default function BookingPageContent() {
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
               {timeSlots.map((slot) => {
                 const selected = form.timeSlot === slot;
+                const blocked = isTimeSlotBlocked(form.mealPeriod, slot);
                 return (
                   <button
                     key={slot}
                     type="button"
+                    disabled={blocked}
+                    aria-label={
+                      blocked
+                        ? t("booking.calendar.blockedTime", { time: slot })
+                        : undefined
+                    }
                     onClick={() => setForm((current) => ({ ...current, timeSlot: slot }))}
                     className={[
                       "relative rounded-xl border px-3 py-3 text-sm transition-colors duration-200 sm:py-3.5",
-                      selected
+                      blocked
+                        ? "cursor-not-allowed border-white/8 bg-[#141418] text-white/28 line-through decoration-white/40"
+                        : selected
                         ? "border-[#b3201d] bg-[#b3201d]/12 text-[#ffb4b0]"
                         : "border-white/12 bg-[#141418] text-white/85 hover:border-white/25"
                     ].join(" ")}

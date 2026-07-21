@@ -302,6 +302,8 @@
     "calendar": {
       "prevMonth": "Previous month",
       "nextMonth": "Next month",
+      "blockedDate": "Unavailable date {{date}}",
+      "blockedTime": "Unavailable time {{time}}",
       "weekdays": {
         "sun": "S",
         "mon": "M",

@@ -301,6 +301,8 @@
     "calendar": {
       "prevMonth": "上一個月",
       "nextMonth": "下一個月",
+      "blockedDate": "不可選日期 {{date}}",
+      "blockedTime": "不可選時段 {{time}}",
       "weekdays": {
         "sun": "日",
         "mon": "一",

@@ -1,12 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import {
+  isDateFullyBlockedByBlocker,
+  type BookingBlockerRecord
+} from "@/lib/services/blackoutDate.services";
 import { typography } from "@/lib/typography";
 
 type BookingCalendarProps = {
   selectedDate: Date | null;
-  onSelectDate: (date: Date) => void;
+  onSelectDate: (date: Date | null) => void;
+  bookingBlockers: BookingBlockerRecord[];
 };
 
 const WEEKDAY_KEYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"] as const;
@@ -19,9 +24,23 @@ function isSameDay(a: Date, b: Date) {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
-export default function BookingCalendar({ selectedDate, onSelectDate }: BookingCalendarProps) {
+function monthIndex(date: Date) {
+  return date.getFullYear() * 12 + date.getMonth();
+}
+
+export default function BookingCalendar({
+  selectedDate,
+  onSelectDate,
+  bookingBlockers
+}: BookingCalendarProps) {
   const { t, i18n } = useTranslation();
   const today = useMemo(() => startOfDay(new Date()), []);
+  const minViewMonth = useMemo(() => new Date(today.getFullYear(), today.getMonth(), 1), [today]);
+  const maxViewMonth = useMemo(() => new Date(today.getFullYear(), today.getMonth() + 1, 1), [today]);
+  const latestBookableDate = useMemo(
+    () => new Date(today.getFullYear(), today.getMonth() + 2, 0),
+    [today]
+  );
   const [viewMonth, setViewMonth] = useState(() => new Date(today.getFullYear(), today.getMonth(), 1));
 
   const monthLabel = useMemo(
@@ -47,7 +66,24 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: BookingC
     });
   }, [viewMonth]);
 
-  const canGoPrev = viewMonth.getFullYear() > today.getFullYear() || viewMonth.getMonth() > today.getMonth();
+  useEffect(() => {
+    if (!selectedDate) {
+      return;
+    }
+
+    const day = startOfDay(selectedDate);
+    const isOutsideBookableWindow = day < today || day > latestBookableDate;
+    const isSelectedBlocked = bookingBlockers.some((blocker) =>
+      isDateFullyBlockedByBlocker(selectedDate, blocker)
+    );
+
+    if (isOutsideBookableWindow || isSelectedBlocked) {
+      onSelectDate(null);
+    }
+  }, [bookingBlockers, latestBookableDate, onSelectDate, selectedDate, today]);
+
+  const canGoPrev = monthIndex(viewMonth) > monthIndex(minViewMonth);
+  const canGoNext = monthIndex(viewMonth) < monthIndex(maxViewMonth);
 
   const goPrevMonth = () => {
     if (!canGoPrev) {
@@ -57,6 +93,9 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: BookingC
   };
 
   const goNextMonth = () => {
+    if (!canGoNext) {
+      return;
+    }
     setViewMonth((current) => new Date(current.getFullYear(), current.getMonth() + 1, 1));
   };
 
@@ -78,8 +117,9 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: BookingC
         <button
           type="button"
           onClick={goNextMonth}
+          disabled={!canGoNext}
           aria-label={t("booking.calendar.nextMonth")}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-[#e8cb75] transition-colors duration-200 hover:bg-white/8"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-[#e8cb75] transition-colors duration-200 hover:bg-white/8 disabled:cursor-not-allowed disabled:opacity-30"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
             <path d="M9.3 5.3a1 1 0 0 1 1.4 0l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 1 1-1.4-1.4L13.59 11 9.3 6.7a1 1 0 0 1 0-1.4Z" />
@@ -99,18 +139,29 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: BookingC
 
         {calendarDays.map((date) => {
           const inCurrentMonth = date.getMonth() === viewMonth.getMonth();
-          const isPast = startOfDay(date) < today;
+          const day = startOfDay(date);
+          const isPast = day < today;
+          const isOutsideBookableWindow = day > latestBookableDate;
+          const isBlocked = bookingBlockers.some((blocker) =>
+            isDateFullyBlockedByBlocker(date, blocker)
+          );
           const isSelected = selectedDate ? isSameDay(date, selectedDate) : false;
           const isToday = isSameDay(date, today);
           const isSunday = date.getDay() === 0;
-          const disabled = !inCurrentMonth || isPast;
+          const disabled = !inCurrentMonth || isPast || isOutsideBookableWindow || isBlocked;
 
           let dayClass = "relative flex h-10 items-center justify-center rounded-full text-sm transition-colors duration-200 sm:h-11 ";
 
           if (isSelected) {
             dayClass += "bg-[#b3201d] font-medium text-white hover:bg-[#ca2a26]";
           } else if (disabled) {
-            dayClass += isSunday ? "cursor-not-allowed text-[#b3201d]/22" : "cursor-not-allowed text-white/18";
+            if (isBlocked && inCurrentMonth && !isPast) {
+              dayClass += "cursor-not-allowed text-white/28 line-through decoration-white/40";
+            } else if (isSunday) {
+              dayClass += "cursor-not-allowed text-[#b3201d]/22";
+            } else {
+              dayClass += "cursor-not-allowed text-white/18";
+            }
           } else if (isSunday) {
             dayClass += "text-[#b3201d] hover:bg-[#b3201d]/10";
           } else if (isToday && inCurrentMonth) {
@@ -124,6 +175,11 @@ export default function BookingCalendar({ selectedDate, onSelectDate }: BookingC
               key={date.toISOString()}
               type="button"
               disabled={disabled}
+              aria-label={
+                isBlocked && inCurrentMonth && !isPast
+                  ? t("booking.calendar.blockedDate", { date: date.getDate() })
+                  : undefined
+              }
               onClick={() => onSelectDate(date)}
               className={dayClass}
             >

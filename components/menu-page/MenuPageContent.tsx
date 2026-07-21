@@ -17,7 +17,7 @@ function resolveLocale(language: string) {
 }
 
 export default function MenuPageContent() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const { text } = useWebContent();
   const locale = resolveLocale(i18n.language);
   const [menuRecords, setMenuRecords] = useState<MenuItemRecord[]>([]);
