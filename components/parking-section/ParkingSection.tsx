@@ -21,7 +21,7 @@ export default function ParkingSection() {
     >
       <div className="mx-auto w-full max-w-[1200px] px-6">
         <div className="mx-auto max-w-[72ch] text-center">
-          <p className={`${typography.eyebrow} text-white/55`}>{t("parkingSection.eyebrow")}</p>
+          <p className={`${typography.eyebrow} text-white/55`}>{text("parking_eyebrow", "parkingSection.eyebrow")}</p>
           <h2 className={`${typography.sectionTitle} mt-3 text-white/95`}>{text("parking_title", "parkingSection.title")}</h2>
           <p className={`${typography.paragraph} mt-6 text-white/74`}>{text("parking_description", "parkingSection.description")}</p>
           <p className={`${typography.caption} mt-4 text-white/56`}>{t("parkingSection.note")}</p>

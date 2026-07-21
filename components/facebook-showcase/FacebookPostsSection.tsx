@@ -91,7 +91,7 @@ export default function FacebookPostsSection() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [activePost?.id]);
+  }, [activePost]);
 
   useLayoutEffect(() => {
     if (!sectionRef.current || !moreButtonWrapRef.current) {

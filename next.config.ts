@@ -37,6 +37,7 @@ function buildMediaRemotePatterns() {
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  allowedDevOrigins: ["192.168.0.128"],
   images: {
     remotePatterns: buildMediaRemotePatterns()
   },

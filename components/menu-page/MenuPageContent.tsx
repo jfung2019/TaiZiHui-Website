@@ -17,7 +17,7 @@ function resolveLocale(language: string) {
 }
 
 export default function MenuPageContent() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const { text } = useWebContent();
   const locale = resolveLocale(i18n.language);
   const [menuRecords, setMenuRecords] = useState<MenuItemRecord[]>([]);
@@ -52,7 +52,7 @@ export default function MenuPageContent() {
       <section className="relative isolate overflow-hidden border-b border-white/10 pt-44 pb-20 sm:pt-48 sm:pb-24">
         <div className="absolute inset-0">
           <Image
-            src="/menu/7208.jpg"
+            src="/menu/7208.webp"
             alt=""
             fill
             priority

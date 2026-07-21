@@ -166,10 +166,10 @@ export default function SignatureFoodSection() {
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-[68ch] text-center">
           <h2 id="signature-food-heading" className={`${typography.sectionTitle} m-0 text-white/95`}>
-            {text("signature_food_title")}
+            {text("signature_food_title", "signatureFood.title")}
           </h2>
           <p className={`${typography.paragraph} mt-4 text-white/72`}>
-            {text("signature_food_description")}
+            {text("signature_food_description", "signatureFood.description")}
           </p>
         </div>
       </div>

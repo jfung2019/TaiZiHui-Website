@@ -154,6 +154,8 @@
   },
   "signatureFood": {
     "sectionLabel": "Signature dishes carousel",
+    "title": "Signature Dishes",
+    "description": "Click any dish to bring it to center and explore our chef's signature creations.",
     "focusDish": "Focus on {{dish}}",
     "seeMenuLine": "SEE MENU",
     "seeMenuAriaLabel": "See menu"
@@ -255,8 +257,7 @@
     "placeholders": {
       "name": "Your name",
       "tel": "Your tel number",
-      "specialRequests": "Birthday, anniversary, seating preference, or other arrangements...",
-      "allergy": "List any food allergies or dietary restrictions..."
+      "notes": "Birthday, anniversary, seating preference, allergies, or other dietary notes..."
     },
     "sections": {
       "contact": {
@@ -280,6 +281,9 @@
       "budget": {
         "title": "Budget per Guest"
       },
+      "notes": {
+        "title": "Special Requests & Dietary Notes"
+      },
       "specialRequests": {
         "title": "Special Requests"
       },
@@ -298,6 +302,8 @@
     "calendar": {
       "prevMonth": "Previous month",
       "nextMonth": "Next month",
+      "blockedDate": "Unavailable date {{date}}",
+      "blockedTime": "Unavailable time {{time}}",
       "weekdays": {
         "sun": "S",
         "mon": "M",

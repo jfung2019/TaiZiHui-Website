@@ -23,9 +23,13 @@ export default function HeroSection() {
           setCarouselItems(items);
         }
       })
-      .catch(() => {
+      .catch((error) => {
         if (!cancelled) {
           setCarouselItems([]);
+        }
+
+        if (process.env.NODE_ENV === "development") {
+          console.error("[HeroSection] Failed to load carousel:", error);
         }
       });
 
@@ -36,21 +40,24 @@ export default function HeroSection() {
 
   const heroImageUrl = useMemo(() => {
     const sortedItems = [...carouselItems].sort((a, b) => a.sortOrder - b.sortOrder);
-    return sortedItems[0]?.imageUrl || "";
+    const url = sortedItems[0]?.imageUrl?.trim();
+    return url || null;
   }, [carouselItems]);
 
   return (
     <section
       data-hero-section
-      className="relative min-h-svh overflow-hidden isolate"
+      className="relative min-h-svh overflow-hidden isolate bg-[#08080b]"
     >
-      <Image
-        src={heroImageUrl}
-        alt={t("hero.heroImageAlt")}
-        fill
-        priority
-        className="object-cover object-center md:object-[center_42%]"
-      />
+      {heroImageUrl ? (
+        <Image
+          src={heroImageUrl}
+          alt={t("hero.heroImageAlt")}
+          fill
+          priority
+          className="object-cover object-center md:object-[center_42%]"
+        />
+      ) : null}
 
       <div className="absolute inset-0 z-1 bg-[linear-gradient(180deg,rgba(0,0,0,0.22)_0%,rgba(0,0,0,0.12)_40%,rgba(0,0,0,0.32)_100%)]" />
 

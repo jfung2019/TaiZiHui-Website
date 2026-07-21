@@ -89,13 +89,26 @@ export function WebContentProvider({ children }: { children: ReactNode }) {
 
     fetchContentFromBackend()
       .then((data) => {
-        if (!cancelled) {
-          setCms(parseCmsPayload(data));
+        if (cancelled) {
+          return;
+        }
+
+        const mapped = parseCmsPayload(data);
+        setCms(mapped);
+
+        if (process.env.NODE_ENV === "development") {
+          console.info(
+            `[WebContentProvider] Loaded ${Object.keys(mapped).length} CMS content keys`
+          );
         }
       })
-      .catch(() => {
+      .catch((error) => {
         if (!cancelled) {
           setCms({});
+        }
+
+        if (process.env.NODE_ENV === "development") {
+          console.error("[WebContentProvider] Failed to load CMS content:", error);
         }
       })
       .finally(() => {
